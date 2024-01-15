@@ -98,10 +98,11 @@ namespace Clinic_Management_System
         {
             if (cbBrandName.SelectedIndex != -1)
             {
+
                 string brand = cbBrandName.SelectedItem.ToString();
+                txtMedicineName.Text = "";
 
                 lbMedicineResults.Items.Clear();
-                txtMedicineName.Text = "";
 
                 List<uspSelectMedicineByBrandNameResult> Brand = new List<uspSelectMedicineByBrandNameResult>();
                 Brand = db_con.uspSelectMedicineByBrandName(brand).ToList();
@@ -264,20 +265,25 @@ namespace Clinic_Management_System
 
         private void txtMedicineName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string name = txtMedicineName.Text;
-
-            lbMedicineResults.Items.Clear();
-            cbManufacturer.SelectedIndex = -1;
-            cbExpDate.SelectedIndex = -1;
-            cbBrandName.SelectedIndex = -1;
-
-            List<uspSelectMedicineByGenericNameResult> GenName = new List<uspSelectMedicineByGenericNameResult>();
-            GenName = db_con.uspSelectMedicineByGenericName(name).ToList();
-
-            foreach (var a in GenName)
+            if (txtMedicineName.Text.Length > 0)
             {
-                lbMedicineResults.Items.Add(a.MedicineName);
+                string name = txtMedicineName.Text;
+
+                lbMedicineResults.Items.Clear();
+                cbManufacturer.SelectedIndex = -1;
+                cbExpDate.SelectedIndex = -1;
+                cbBrandName.SelectedIndex = -1;
+
+                List<uspSelectMedicineByGenericNameResult> GenName = new List<uspSelectMedicineByGenericNameResult>();
+                GenName = db_con.uspSelectMedicineByGenericName(name).ToList();
+
+                foreach (var a in GenName)
+                {
+                    lbMedicineResults.Items.Add(a.MedicineName);
+                }
             }
+            if (txtMedicineName.Text.Length == 0)
+                Fill();
         }
     }
 }
