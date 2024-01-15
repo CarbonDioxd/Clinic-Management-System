@@ -507,6 +507,20 @@ namespace Clinic_Management_System
 		{
 			return ((System.Nullable<int>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name).ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetAllSupplies")]
+		public ISingleResult<GetAllSuppliesResult> GetAllSupplies()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<GetAllSuppliesResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetSpecificSupply")]
+		public ISingleResult<GetSpecificSupplyResult> GetSpecificSupply([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string dte, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string suppliername)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), dte, name, suppliername);
+			return ((ISingleResult<GetSpecificSupplyResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblClinicVisits")]
@@ -6132,6 +6146,310 @@ namespace Clinic_Management_System
 		private System.DateTime _SupplyLastUpdated;
 		
 		public uspSelectAvailSuppliesResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyID", DbType="Int NOT NULL")]
+		public int SupplyID
+		{
+			get
+			{
+				return this._SupplyID;
+			}
+			set
+			{
+				if ((this._SupplyID != value))
+				{
+					this._SupplyID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string SupplyName
+		{
+			get
+			{
+				return this._SupplyName;
+			}
+			set
+			{
+				if ((this._SupplyName != value))
+				{
+					this._SupplyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyExpDate", DbType="Date")]
+		public System.Nullable<System.DateTime> SupplyExpDate
+		{
+			get
+			{
+				return this._SupplyExpDate;
+			}
+			set
+			{
+				if ((this._SupplyExpDate != value))
+				{
+					this._SupplyExpDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplierName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string SupplierName
+		{
+			get
+			{
+				return this._SupplierName;
+			}
+			set
+			{
+				if ((this._SupplierName != value))
+				{
+					this._SupplierName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyQty", DbType="Int NOT NULL")]
+		public int SupplyQty
+		{
+			get
+			{
+				return this._SupplyQty;
+			}
+			set
+			{
+				if ((this._SupplyQty != value))
+				{
+					this._SupplyQty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyStatus", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string SupplyStatus
+		{
+			get
+			{
+				return this._SupplyStatus;
+			}
+			set
+			{
+				if ((this._SupplyStatus != value))
+				{
+					this._SupplyStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyPrice", DbType="Money NOT NULL")]
+		public decimal SupplyPrice
+		{
+			get
+			{
+				return this._SupplyPrice;
+			}
+			set
+			{
+				if ((this._SupplyPrice != value))
+				{
+					this._SupplyPrice = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyLastUpdated", DbType="DateTime NOT NULL")]
+		public System.DateTime SupplyLastUpdated
+		{
+			get
+			{
+				return this._SupplyLastUpdated;
+			}
+			set
+			{
+				if ((this._SupplyLastUpdated != value))
+				{
+					this._SupplyLastUpdated = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetAllSuppliesResult
+	{
+		
+		private int _SupplyID;
+		
+		private string _SupplyName;
+		
+		private System.Nullable<System.DateTime> _SupplyExpDate;
+		
+		private string _SupplierName;
+		
+		private int _SupplyQty;
+		
+		private string _SupplyStatus;
+		
+		private decimal _SupplyPrice;
+		
+		private System.DateTime _SupplyLastUpdated;
+		
+		public GetAllSuppliesResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyID", DbType="Int NOT NULL")]
+		public int SupplyID
+		{
+			get
+			{
+				return this._SupplyID;
+			}
+			set
+			{
+				if ((this._SupplyID != value))
+				{
+					this._SupplyID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string SupplyName
+		{
+			get
+			{
+				return this._SupplyName;
+			}
+			set
+			{
+				if ((this._SupplyName != value))
+				{
+					this._SupplyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyExpDate", DbType="Date")]
+		public System.Nullable<System.DateTime> SupplyExpDate
+		{
+			get
+			{
+				return this._SupplyExpDate;
+			}
+			set
+			{
+				if ((this._SupplyExpDate != value))
+				{
+					this._SupplyExpDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplierName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string SupplierName
+		{
+			get
+			{
+				return this._SupplierName;
+			}
+			set
+			{
+				if ((this._SupplierName != value))
+				{
+					this._SupplierName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyQty", DbType="Int NOT NULL")]
+		public int SupplyQty
+		{
+			get
+			{
+				return this._SupplyQty;
+			}
+			set
+			{
+				if ((this._SupplyQty != value))
+				{
+					this._SupplyQty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyStatus", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string SupplyStatus
+		{
+			get
+			{
+				return this._SupplyStatus;
+			}
+			set
+			{
+				if ((this._SupplyStatus != value))
+				{
+					this._SupplyStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyPrice", DbType="Money NOT NULL")]
+		public decimal SupplyPrice
+		{
+			get
+			{
+				return this._SupplyPrice;
+			}
+			set
+			{
+				if ((this._SupplyPrice != value))
+				{
+					this._SupplyPrice = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyLastUpdated", DbType="DateTime NOT NULL")]
+		public System.DateTime SupplyLastUpdated
+		{
+			get
+			{
+				return this._SupplyLastUpdated;
+			}
+			set
+			{
+				if ((this._SupplyLastUpdated != value))
+				{
+					this._SupplyLastUpdated = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetSpecificSupplyResult
+	{
+		
+		private int _SupplyID;
+		
+		private string _SupplyName;
+		
+		private System.Nullable<System.DateTime> _SupplyExpDate;
+		
+		private string _SupplierName;
+		
+		private int _SupplyQty;
+		
+		private string _SupplyStatus;
+		
+		private decimal _SupplyPrice;
+		
+		private System.DateTime _SupplyLastUpdated;
+		
+		public GetSpecificSupplyResult()
 		{
 		}
 		

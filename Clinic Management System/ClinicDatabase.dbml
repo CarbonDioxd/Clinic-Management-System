@@ -566,4 +566,31 @@
     <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(100)" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.GetAllSupplies" Method="GetAllSupplies">
+    <ElementType Name="GetAllSuppliesResult">
+      <Column Name="SupplyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyExpDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SupplierName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyQty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyStatus" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyLastUpdated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetSpecificSupply" Method="GetSpecificSupply">
+    <Parameter Name="dte" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="name" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="suppliername" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="GetSpecificSupplyResult">
+      <Column Name="SupplyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyExpDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SupplierName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyQty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyStatus" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyLastUpdated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>
