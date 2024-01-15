@@ -28,6 +28,10 @@ namespace Clinic_Management_System
         {
             InitializeComponent();
             Fill();
+            if (ConstantValues.type == "Admin")
+            {
+                btnAddSupply.IsEnabled = false;
+            }
         }
 
         private void Fill()
@@ -45,20 +49,23 @@ namespace Clinic_Management_System
                 {
                     cbExpDate.Items.Add(result.SupplyExpDate);
                 }
-                if (!cbSupplier.Items.Contains(result.SupplierName))
+                if (!cbSupplier.Items.Contains(result.SupplyStatus))
                 {
-                    cbSupplier.Items.Add(result.SupplierName);
+                    cbSupplier.Items.Add(result.SupplyStatus);
                 }
             }
+            if (cbSupplier.Items.Contains("Out Of Stock"))
+                cbSupplier.Items.Add("In Stock");
+            else
+                cbSupplier.Items.Add("Out Of Stock");
         }
         private void FilterFill()
         {
             lbSupplyResults.Items.Clear();
-            List<GetSpecificSupplyResult> getSpecificSupplyResults = db_con.GetSpecificSupply(a, c, b).ToList();
+            List<GetSpecificSupplyResult> getSpecificSupplyResults = db_con.GetSpecificSupply(d).ToList();
             foreach (var result in getSpecificSupplyResults)
             {
                 lbSupplyResults.Items.Add(result.SupplyName);
-
             }
         }
 
@@ -81,7 +88,7 @@ namespace Clinic_Management_System
         private void cbSupplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbSupplier.SelectedIndex != -1)
-                b = cbSupplier.SelectedItem.ToString();
+                a = cbSupplier.SelectedItem.ToString();
             FilterFill();
         }
 
@@ -99,6 +106,8 @@ namespace Clinic_Management_System
             cbExpDate.SelectedIndex = -1;
             cbSupplier.SelectedIndex = -1;
             FilterFill();
+            if (d == "")
+                Fill();
         }
     }
 }

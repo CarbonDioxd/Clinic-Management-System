@@ -34,24 +34,6 @@ namespace Clinic_Management_System
             }
         }
 
-        private void btnSearch_Click_1(object sender, RoutedEventArgs e)
-        {
-            string name = txtMedicineName.Text;
-
-            lbMedicineResults.Items.Clear();
-            cbManufacturer.SelectedIndex = -1;
-            cbExpDate.SelectedIndex = -1;
-            cbBrandName.SelectedIndex = -1;
-
-            List<uspSelectMedicineByGenericNameResult> GenName = new List<uspSelectMedicineByGenericNameResult>();
-            GenName = db_con.uspSelectMedicineByGenericName(name).ToList();
-
-            foreach (var a in GenName)
-            {
-                lbMedicineResults.Items.Add(a.MedicineName);
-            }
-        }
-
         private void btnAddInventory_Click(object sender, RoutedEventArgs e)
         {
             ClinicEditInventoryWindow clinicEditInventoryWindow = new ClinicEditInventoryWindow();
@@ -277,6 +259,24 @@ namespace Clinic_Management_System
                         }
                     }
                 }
+            }
+        }
+
+        private void txtMedicineName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string name = txtMedicineName.Text;
+
+            lbMedicineResults.Items.Clear();
+            cbManufacturer.SelectedIndex = -1;
+            cbExpDate.SelectedIndex = -1;
+            cbBrandName.SelectedIndex = -1;
+
+            List<uspSelectMedicineByGenericNameResult> GenName = new List<uspSelectMedicineByGenericNameResult>();
+            GenName = db_con.uspSelectMedicineByGenericName(name).ToList();
+
+            foreach (var a in GenName)
+            {
+                lbMedicineResults.Items.Add(a.MedicineName);
             }
         }
     }

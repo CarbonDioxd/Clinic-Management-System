@@ -516,9 +516,9 @@ namespace Clinic_Management_System
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetSpecificSupply")]
-		public ISingleResult<GetSpecificSupplyResult> GetSpecificSupply([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string dte, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string suppliername)
+		public ISingleResult<GetSpecificSupplyResult> GetSpecificSupply([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string search)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), dte, name, suppliername);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), search);
 			return ((ISingleResult<GetSpecificSupplyResult>)(result.ReturnValue));
 		}
 	}

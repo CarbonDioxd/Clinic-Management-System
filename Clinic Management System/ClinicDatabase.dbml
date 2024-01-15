@@ -579,9 +579,7 @@
     </ElementType>
   </Function>
   <Function Name="dbo.GetSpecificSupply" Method="GetSpecificSupply">
-    <Parameter Name="dte" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="name" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="suppliername" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="search" Type="System.String" DbType="NVarChar(100)" />
     <ElementType Name="GetSpecificSupplyResult">
       <Column Name="SupplyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="SupplyName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />

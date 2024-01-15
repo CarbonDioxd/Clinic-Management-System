@@ -14,8 +14,7 @@
         <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="684,426,0,0" VerticalAlignment="Top" Height="30" Width="97" Background="#FFEBBC38" Foreground="Black" Click="btnBack_Click" />
         <Button x:Name="btnAddInventory" Content="Add Inventory" HorizontalAlignment="Left" Margin="19,426,0,0" VerticalAlignment="Top" Height="30" Width="138" Background="#FFEBBC38" Foreground="Black" Click="btnAddInventory_Click" />
         <Label Content="Medicine" HorizontalAlignment="Left" Margin="19,9,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox x:Name="txtMedicineName" HorizontalAlignment="Left" Margin="19,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="25"/>
-        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="284,35,0,0" VerticalAlignment="Top" Height="25" Width="74" Background="#FFEBBC38" Foreground="#FF101010" Click="btnSearch_Click_1" />
+        <TextBox x:Name="txtMedicineName" HorizontalAlignment="Left" Margin="19,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="25" TextChanged="txtMedicineName_TextChanged"/>
         <Image HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="78" Source="/Resource-Logo.png" Margin="705,4,0,0" Opacity="0.3" RenderTransformOrigin="0.251,0.488"/>
         <ComboBox x:Name="cbBrandName" HorizontalAlignment="Left" Margin="100,75,0,0" VerticalAlignment="Top" Width="160" Height="25" BorderBrush="White" SelectionChanged="cbBrandName_SelectionChanged"/>
         <Label Content="Brand Name" HorizontalAlignment="Left" Margin="19,74,0,0" VerticalAlignment="Top" Foreground="White"/>
