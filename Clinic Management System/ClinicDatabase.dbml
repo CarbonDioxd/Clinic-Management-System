@@ -1,5 +1,126 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ClinicManagementSystem_Group3" Class="ClinicDatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=BERNISECUTE\SQLEXPRESS;Initial Catalog=ClinicManagementSystem_Group3;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="Clinic_Management_System.Properties.Settings" SettingsPropertyName="ClinicManagementSystem_Group3ConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=FLAGSHIP;Initial Catalog=ClinicManagementSystem_Group3;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True" SettingsObjectName="Clinic_Management_System.Properties.Settings" SettingsPropertyName="ClinicManagementSystem_Group3ConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblClinicVisits" Member="tblClinicVisits">
+    <Type Name="tblClinicVisit">
+      <Column Name="VisitID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PatientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PatientTimeIn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PatientTimeOut" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PatientNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="tblClinicVisit_tblPtMedHistory" Member="tblPtMedHistories" ThisKey="VisitID" OtherKey="VisitID" Type="tblPtMedHistory" />
+      <Association Name="tblClinicVisit_tblPtSupplyHistory" Member="tblPtSupplyHistories" ThisKey="VisitID" OtherKey="VisitID" Type="tblPtSupplyHistory" />
+      <Association Name="tblPatient_tblClinicVisit" Member="tblPatient" ThisKey="PatientID" OtherKey="PatientID" Type="tblPatient" IsForeignKey="true" />
+      <Association Name="tblUser_tblClinicVisit" Member="tblUser" ThisKey="UserID" OtherKey="UserID" Type="tblUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblEmergencyContact" Member="tblEmergencyContacts">
+    <Type Name="tblEmergencyContact">
+      <Column Name="EmgyContactID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmgyRelationship" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmgyContactName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="EmgyContactNum" Type="System.String" DbType="NChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="EmgyContactEmail" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="EmgyContactAddress" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="PatientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblPatient_tblEmergencyContact" Member="tblPatient" ThisKey="PatientID" OtherKey="PatientID" Type="tblPatient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblLogs" Member="tblLogs">
+    <Type Name="tblLog">
+      <Column Name="LogID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LogDesc" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LogDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tblUser_tblLog" Member="tblUser" ThisKey="UserID" OtherKey="UserID" Type="tblUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMedicine" Member="tblMedicines">
+    <Type Name="tblMedicine">
+      <Column Name="MedicineID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MedicineName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MedicineType" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="MedExpDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="MedManufacturer" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="MedQty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MedStatus" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MedLastUpdated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tblMedicine_tblPtMedHistory" Member="tblPtMedHistories" ThisKey="MedicineID" OtherKey="MedicineID" Type="tblPtMedHistory" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblPatient" Member="tblPatients">
+    <Type Name="tblPatient">
+      <Column Name="PatientID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PatientName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PatientAge" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PatientGender" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PatientType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PatientDesc" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PatientNum" Type="System.String" DbType="NChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="PatientEmail" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PatientAddress" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="AdviserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblPatient_tblClinicVisit" Member="tblClinicVisits" ThisKey="PatientID" OtherKey="PatientID" Type="tblClinicVisit" />
+      <Association Name="tblPatient_tblEmergencyContact" Member="tblEmergencyContacts" ThisKey="PatientID" OtherKey="PatientID" Type="tblEmergencyContact" />
+      <Association Name="tblStudentAdviser_tblPatient" Member="tblStudentAdviser" ThisKey="AdviserID" OtherKey="AdviserID" Type="tblStudentAdviser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblPtMedHistory" Member="tblPtMedHistories">
+    <Type Name="tblPtMedHistory">
+      <Column Name="PtMedID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="VisitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MedicineID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MedQtyGiven" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblClinicVisit_tblPtMedHistory" Member="tblClinicVisit" ThisKey="VisitID" OtherKey="VisitID" Type="tblClinicVisit" IsForeignKey="true" />
+      <Association Name="tblMedicine_tblPtMedHistory" Member="tblMedicine" ThisKey="MedicineID" OtherKey="MedicineID" Type="tblMedicine" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblPtSupplyHistory" Member="tblPtSupplyHistories">
+    <Type Name="tblPtSupplyHistory">
+      <Column Name="PtSupplyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="VisitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyQtyGiven" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tblClinicVisit_tblPtSupplyHistory" Member="tblClinicVisit" ThisKey="VisitID" OtherKey="VisitID" Type="tblClinicVisit" IsForeignKey="true" />
+      <Association Name="tblSupply_tblPtSupplyHistory" Member="tblSupply" ThisKey="SupplyID" OtherKey="SupplyID" Type="tblSupply" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblStudentAdviser" Member="tblStudentAdvisers">
+    <Type Name="tblStudentAdviser">
+      <Column Name="AdviserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdviserName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="AdviserEmail" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="AdviserNum" Type="System.String" DbType="NChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="AdviserDept" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="tblStudentAdviser_tblPatient" Member="tblPatients" ThisKey="AdviserID" OtherKey="AdviserID" Type="tblPatient" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblSupplies" Member="tblSupplies">
+    <Type Name="tblSupply">
+      <Column Name="SupplyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SupplyName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyExpDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SupplierName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyQty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyStatus" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="SupplyLastUpdated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tblSupply_tblPtSupplyHistory" Member="tblPtSupplyHistories" ThisKey="SupplyID" OtherKey="SupplyID" Type="tblPtSupplyHistory" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblUsers" Member="tblUsers">
+    <Type Name="tblUser">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserFullName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserPassword" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserEmail" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="UserContact" Type="System.String" DbType="NChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="UserType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="tblUser_tblClinicVisit" Member="tblClinicVisits" ThisKey="UserID" OtherKey="UserID" Type="tblClinicVisit" />
+      <Association Name="tblUser_tblLog" Member="tblLogs" ThisKey="UserID" OtherKey="UserID" Type="tblLog" />
+    </Type>
+  </Table>
   <Function Name="dbo.uspAddAdviser" Method="uspAddAdviser">
     <Parameter Name="ANME" Parameter="aNME" Type="System.String" DbType="NVarChar(100)" />
     <Parameter Name="AEMA" Parameter="aEMA" Type="System.String" DbType="NVarChar(100)" />

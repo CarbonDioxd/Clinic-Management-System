@@ -30,6 +30,36 @@ namespace Clinic_Management_System
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InserttblClinicVisit(tblClinicVisit instance);
+    partial void UpdatetblClinicVisit(tblClinicVisit instance);
+    partial void DeletetblClinicVisit(tblClinicVisit instance);
+    partial void InserttblEmergencyContact(tblEmergencyContact instance);
+    partial void UpdatetblEmergencyContact(tblEmergencyContact instance);
+    partial void DeletetblEmergencyContact(tblEmergencyContact instance);
+    partial void InserttblLog(tblLog instance);
+    partial void UpdatetblLog(tblLog instance);
+    partial void DeletetblLog(tblLog instance);
+    partial void InserttblMedicine(tblMedicine instance);
+    partial void UpdatetblMedicine(tblMedicine instance);
+    partial void DeletetblMedicine(tblMedicine instance);
+    partial void InserttblPatient(tblPatient instance);
+    partial void UpdatetblPatient(tblPatient instance);
+    partial void DeletetblPatient(tblPatient instance);
+    partial void InserttblPtMedHistory(tblPtMedHistory instance);
+    partial void UpdatetblPtMedHistory(tblPtMedHistory instance);
+    partial void DeletetblPtMedHistory(tblPtMedHistory instance);
+    partial void InserttblPtSupplyHistory(tblPtSupplyHistory instance);
+    partial void UpdatetblPtSupplyHistory(tblPtSupplyHistory instance);
+    partial void DeletetblPtSupplyHistory(tblPtSupplyHistory instance);
+    partial void InserttblStudentAdviser(tblStudentAdviser instance);
+    partial void UpdatetblStudentAdviser(tblStudentAdviser instance);
+    partial void DeletetblStudentAdviser(tblStudentAdviser instance);
+    partial void InserttblSupply(tblSupply instance);
+    partial void UpdatetblSupply(tblSupply instance);
+    partial void DeletetblSupply(tblSupply instance);
+    partial void InserttblUser(tblUser instance);
+    partial void UpdatetblUser(tblUser instance);
+    partial void DeletetblUser(tblUser instance);
     #endregion
 		
 		public ClinicDatabaseDataContext() : 
@@ -60,6 +90,86 @@ namespace Clinic_Management_System
 				base(connection, mappingSource)
 		{
 			OnCreated();
+		}
+		
+		public System.Data.Linq.Table<tblClinicVisit> tblClinicVisits
+		{
+			get
+			{
+				return this.GetTable<tblClinicVisit>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblEmergencyContact> tblEmergencyContacts
+		{
+			get
+			{
+				return this.GetTable<tblEmergencyContact>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblLog> tblLogs
+		{
+			get
+			{
+				return this.GetTable<tblLog>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblMedicine> tblMedicines
+		{
+			get
+			{
+				return this.GetTable<tblMedicine>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblPatient> tblPatients
+		{
+			get
+			{
+				return this.GetTable<tblPatient>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblPtMedHistory> tblPtMedHistories
+		{
+			get
+			{
+				return this.GetTable<tblPtMedHistory>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblPtSupplyHistory> tblPtSupplyHistories
+		{
+			get
+			{
+				return this.GetTable<tblPtSupplyHistory>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblStudentAdviser> tblStudentAdvisers
+		{
+			get
+			{
+				return this.GetTable<tblStudentAdviser>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblSupply> tblSupplies
+		{
+			get
+			{
+				return this.GetTable<tblSupply>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblUser> tblUsers
+		{
+			get
+			{
+				return this.GetTable<tblUser>();
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspAddAdviser")]
@@ -396,6 +506,2519 @@ namespace Clinic_Management_System
 		public System.Nullable<int> udfGetSupplyID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(100)")] string name)
 		{
 			return ((System.Nullable<int>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name).ReturnValue));
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblClinicVisits")]
+	public partial class tblClinicVisit : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _VisitID;
+		
+		private int _PatientID;
+		
+		private int _UserID;
+		
+		private System.DateTime _PatientTimeIn;
+		
+		private System.Nullable<System.DateTime> _PatientTimeOut;
+		
+		private string _PatientNotes;
+		
+		private EntitySet<tblPtMedHistory> _tblPtMedHistories;
+		
+		private EntitySet<tblPtSupplyHistory> _tblPtSupplyHistories;
+		
+		private EntityRef<tblPatient> _tblPatient;
+		
+		private EntityRef<tblUser> _tblUser;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnVisitIDChanging(int value);
+    partial void OnVisitIDChanged();
+    partial void OnPatientIDChanging(int value);
+    partial void OnPatientIDChanged();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
+    partial void OnPatientTimeInChanging(System.DateTime value);
+    partial void OnPatientTimeInChanged();
+    partial void OnPatientTimeOutChanging(System.Nullable<System.DateTime> value);
+    partial void OnPatientTimeOutChanged();
+    partial void OnPatientNotesChanging(string value);
+    partial void OnPatientNotesChanged();
+    #endregion
+		
+		public tblClinicVisit()
+		{
+			this._tblPtMedHistories = new EntitySet<tblPtMedHistory>(new Action<tblPtMedHistory>(this.attach_tblPtMedHistories), new Action<tblPtMedHistory>(this.detach_tblPtMedHistories));
+			this._tblPtSupplyHistories = new EntitySet<tblPtSupplyHistory>(new Action<tblPtSupplyHistory>(this.attach_tblPtSupplyHistories), new Action<tblPtSupplyHistory>(this.detach_tblPtSupplyHistories));
+			this._tblPatient = default(EntityRef<tblPatient>);
+			this._tblUser = default(EntityRef<tblUser>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VisitID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int VisitID
+		{
+			get
+			{
+				return this._VisitID;
+			}
+			set
+			{
+				if ((this._VisitID != value))
+				{
+					this.OnVisitIDChanging(value);
+					this.SendPropertyChanging();
+					this._VisitID = value;
+					this.SendPropertyChanged("VisitID");
+					this.OnVisitIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientID", DbType="Int NOT NULL")]
+		public int PatientID
+		{
+			get
+			{
+				return this._PatientID;
+			}
+			set
+			{
+				if ((this._PatientID != value))
+				{
+					if (this._tblPatient.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPatientIDChanging(value);
+					this.SendPropertyChanging();
+					this._PatientID = value;
+					this.SendPropertyChanged("PatientID");
+					this.OnPatientIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					if (this._tblUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientTimeIn", DbType="DateTime NOT NULL")]
+		public System.DateTime PatientTimeIn
+		{
+			get
+			{
+				return this._PatientTimeIn;
+			}
+			set
+			{
+				if ((this._PatientTimeIn != value))
+				{
+					this.OnPatientTimeInChanging(value);
+					this.SendPropertyChanging();
+					this._PatientTimeIn = value;
+					this.SendPropertyChanged("PatientTimeIn");
+					this.OnPatientTimeInChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientTimeOut", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PatientTimeOut
+		{
+			get
+			{
+				return this._PatientTimeOut;
+			}
+			set
+			{
+				if ((this._PatientTimeOut != value))
+				{
+					this.OnPatientTimeOutChanging(value);
+					this.SendPropertyChanging();
+					this._PatientTimeOut = value;
+					this.SendPropertyChanged("PatientTimeOut");
+					this.OnPatientTimeOutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientNotes", DbType="NVarChar(MAX)")]
+		public string PatientNotes
+		{
+			get
+			{
+				return this._PatientNotes;
+			}
+			set
+			{
+				if ((this._PatientNotes != value))
+				{
+					this.OnPatientNotesChanging(value);
+					this.SendPropertyChanging();
+					this._PatientNotes = value;
+					this.SendPropertyChanged("PatientNotes");
+					this.OnPatientNotesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblClinicVisit_tblPtMedHistory", Storage="_tblPtMedHistories", ThisKey="VisitID", OtherKey="VisitID")]
+		public EntitySet<tblPtMedHistory> tblPtMedHistories
+		{
+			get
+			{
+				return this._tblPtMedHistories;
+			}
+			set
+			{
+				this._tblPtMedHistories.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblClinicVisit_tblPtSupplyHistory", Storage="_tblPtSupplyHistories", ThisKey="VisitID", OtherKey="VisitID")]
+		public EntitySet<tblPtSupplyHistory> tblPtSupplyHistories
+		{
+			get
+			{
+				return this._tblPtSupplyHistories;
+			}
+			set
+			{
+				this._tblPtSupplyHistories.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblPatient_tblClinicVisit", Storage="_tblPatient", ThisKey="PatientID", OtherKey="PatientID", IsForeignKey=true)]
+		public tblPatient tblPatient
+		{
+			get
+			{
+				return this._tblPatient.Entity;
+			}
+			set
+			{
+				tblPatient previousValue = this._tblPatient.Entity;
+				if (((previousValue != value) 
+							|| (this._tblPatient.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblPatient.Entity = null;
+						previousValue.tblClinicVisits.Remove(this);
+					}
+					this._tblPatient.Entity = value;
+					if ((value != null))
+					{
+						value.tblClinicVisits.Add(this);
+						this._PatientID = value.PatientID;
+					}
+					else
+					{
+						this._PatientID = default(int);
+					}
+					this.SendPropertyChanged("tblPatient");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblUser_tblClinicVisit", Storage="_tblUser", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
+		public tblUser tblUser
+		{
+			get
+			{
+				return this._tblUser.Entity;
+			}
+			set
+			{
+				tblUser previousValue = this._tblUser.Entity;
+				if (((previousValue != value) 
+							|| (this._tblUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblUser.Entity = null;
+						previousValue.tblClinicVisits.Remove(this);
+					}
+					this._tblUser.Entity = value;
+					if ((value != null))
+					{
+						value.tblClinicVisits.Add(this);
+						this._UserID = value.UserID;
+					}
+					else
+					{
+						this._UserID = default(int);
+					}
+					this.SendPropertyChanged("tblUser");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblPtMedHistories(tblPtMedHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblClinicVisit = this;
+		}
+		
+		private void detach_tblPtMedHistories(tblPtMedHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblClinicVisit = null;
+		}
+		
+		private void attach_tblPtSupplyHistories(tblPtSupplyHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblClinicVisit = this;
+		}
+		
+		private void detach_tblPtSupplyHistories(tblPtSupplyHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblClinicVisit = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblEmergencyContact")]
+	public partial class tblEmergencyContact : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _EmgyContactID;
+		
+		private string _EmgyRelationship;
+		
+		private string _EmgyContactName;
+		
+		private string _EmgyContactNum;
+		
+		private string _EmgyContactEmail;
+		
+		private string _EmgyContactAddress;
+		
+		private int _PatientID;
+		
+		private EntityRef<tblPatient> _tblPatient;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnEmgyContactIDChanging(int value);
+    partial void OnEmgyContactIDChanged();
+    partial void OnEmgyRelationshipChanging(string value);
+    partial void OnEmgyRelationshipChanged();
+    partial void OnEmgyContactNameChanging(string value);
+    partial void OnEmgyContactNameChanged();
+    partial void OnEmgyContactNumChanging(string value);
+    partial void OnEmgyContactNumChanged();
+    partial void OnEmgyContactEmailChanging(string value);
+    partial void OnEmgyContactEmailChanged();
+    partial void OnEmgyContactAddressChanging(string value);
+    partial void OnEmgyContactAddressChanged();
+    partial void OnPatientIDChanging(int value);
+    partial void OnPatientIDChanged();
+    #endregion
+		
+		public tblEmergencyContact()
+		{
+			this._tblPatient = default(EntityRef<tblPatient>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmgyContactID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int EmgyContactID
+		{
+			get
+			{
+				return this._EmgyContactID;
+			}
+			set
+			{
+				if ((this._EmgyContactID != value))
+				{
+					this.OnEmgyContactIDChanging(value);
+					this.SendPropertyChanging();
+					this._EmgyContactID = value;
+					this.SendPropertyChanged("EmgyContactID");
+					this.OnEmgyContactIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmgyRelationship", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string EmgyRelationship
+		{
+			get
+			{
+				return this._EmgyRelationship;
+			}
+			set
+			{
+				if ((this._EmgyRelationship != value))
+				{
+					this.OnEmgyRelationshipChanging(value);
+					this.SendPropertyChanging();
+					this._EmgyRelationship = value;
+					this.SendPropertyChanged("EmgyRelationship");
+					this.OnEmgyRelationshipChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmgyContactName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string EmgyContactName
+		{
+			get
+			{
+				return this._EmgyContactName;
+			}
+			set
+			{
+				if ((this._EmgyContactName != value))
+				{
+					this.OnEmgyContactNameChanging(value);
+					this.SendPropertyChanging();
+					this._EmgyContactName = value;
+					this.SendPropertyChanged("EmgyContactName");
+					this.OnEmgyContactNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmgyContactNum", DbType="NChar(11) NOT NULL", CanBeNull=false)]
+		public string EmgyContactNum
+		{
+			get
+			{
+				return this._EmgyContactNum;
+			}
+			set
+			{
+				if ((this._EmgyContactNum != value))
+				{
+					this.OnEmgyContactNumChanging(value);
+					this.SendPropertyChanging();
+					this._EmgyContactNum = value;
+					this.SendPropertyChanged("EmgyContactNum");
+					this.OnEmgyContactNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmgyContactEmail", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string EmgyContactEmail
+		{
+			get
+			{
+				return this._EmgyContactEmail;
+			}
+			set
+			{
+				if ((this._EmgyContactEmail != value))
+				{
+					this.OnEmgyContactEmailChanging(value);
+					this.SendPropertyChanging();
+					this._EmgyContactEmail = value;
+					this.SendPropertyChanged("EmgyContactEmail");
+					this.OnEmgyContactEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmgyContactAddress", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string EmgyContactAddress
+		{
+			get
+			{
+				return this._EmgyContactAddress;
+			}
+			set
+			{
+				if ((this._EmgyContactAddress != value))
+				{
+					this.OnEmgyContactAddressChanging(value);
+					this.SendPropertyChanging();
+					this._EmgyContactAddress = value;
+					this.SendPropertyChanged("EmgyContactAddress");
+					this.OnEmgyContactAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientID", DbType="Int NOT NULL")]
+		public int PatientID
+		{
+			get
+			{
+				return this._PatientID;
+			}
+			set
+			{
+				if ((this._PatientID != value))
+				{
+					if (this._tblPatient.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPatientIDChanging(value);
+					this.SendPropertyChanging();
+					this._PatientID = value;
+					this.SendPropertyChanged("PatientID");
+					this.OnPatientIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblPatient_tblEmergencyContact", Storage="_tblPatient", ThisKey="PatientID", OtherKey="PatientID", IsForeignKey=true)]
+		public tblPatient tblPatient
+		{
+			get
+			{
+				return this._tblPatient.Entity;
+			}
+			set
+			{
+				tblPatient previousValue = this._tblPatient.Entity;
+				if (((previousValue != value) 
+							|| (this._tblPatient.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblPatient.Entity = null;
+						previousValue.tblEmergencyContacts.Remove(this);
+					}
+					this._tblPatient.Entity = value;
+					if ((value != null))
+					{
+						value.tblEmergencyContacts.Add(this);
+						this._PatientID = value.PatientID;
+					}
+					else
+					{
+						this._PatientID = default(int);
+					}
+					this.SendPropertyChanged("tblPatient");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblLogs")]
+	public partial class tblLog : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _LogID;
+		
+		private int _UserID;
+		
+		private string _LogDesc;
+		
+		private System.DateTime _LogDate;
+		
+		private EntityRef<tblUser> _tblUser;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnLogIDChanging(int value);
+    partial void OnLogIDChanged();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
+    partial void OnLogDescChanging(string value);
+    partial void OnLogDescChanged();
+    partial void OnLogDateChanging(System.DateTime value);
+    partial void OnLogDateChanged();
+    #endregion
+		
+		public tblLog()
+		{
+			this._tblUser = default(EntityRef<tblUser>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int LogID
+		{
+			get
+			{
+				return this._LogID;
+			}
+			set
+			{
+				if ((this._LogID != value))
+				{
+					this.OnLogIDChanging(value);
+					this.SendPropertyChanging();
+					this._LogID = value;
+					this.SendPropertyChanged("LogID");
+					this.OnLogIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					if (this._tblUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogDesc", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string LogDesc
+		{
+			get
+			{
+				return this._LogDesc;
+			}
+			set
+			{
+				if ((this._LogDesc != value))
+				{
+					this.OnLogDescChanging(value);
+					this.SendPropertyChanging();
+					this._LogDesc = value;
+					this.SendPropertyChanged("LogDesc");
+					this.OnLogDescChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogDate", DbType="DateTime NOT NULL")]
+		public System.DateTime LogDate
+		{
+			get
+			{
+				return this._LogDate;
+			}
+			set
+			{
+				if ((this._LogDate != value))
+				{
+					this.OnLogDateChanging(value);
+					this.SendPropertyChanging();
+					this._LogDate = value;
+					this.SendPropertyChanged("LogDate");
+					this.OnLogDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblUser_tblLog", Storage="_tblUser", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
+		public tblUser tblUser
+		{
+			get
+			{
+				return this._tblUser.Entity;
+			}
+			set
+			{
+				tblUser previousValue = this._tblUser.Entity;
+				if (((previousValue != value) 
+							|| (this._tblUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblUser.Entity = null;
+						previousValue.tblLogs.Remove(this);
+					}
+					this._tblUser.Entity = value;
+					if ((value != null))
+					{
+						value.tblLogs.Add(this);
+						this._UserID = value.UserID;
+					}
+					else
+					{
+						this._UserID = default(int);
+					}
+					this.SendPropertyChanged("tblUser");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblMedicine")]
+	public partial class tblMedicine : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MedicineID;
+		
+		private string _MedicineName;
+		
+		private string _MedicineType;
+		
+		private System.DateTime _MedExpDate;
+		
+		private string _MedManufacturer;
+		
+		private int _MedQty;
+		
+		private string _MedStatus;
+		
+		private System.DateTime _MedLastUpdated;
+		
+		private EntitySet<tblPtMedHistory> _tblPtMedHistories;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMedicineIDChanging(int value);
+    partial void OnMedicineIDChanged();
+    partial void OnMedicineNameChanging(string value);
+    partial void OnMedicineNameChanged();
+    partial void OnMedicineTypeChanging(string value);
+    partial void OnMedicineTypeChanged();
+    partial void OnMedExpDateChanging(System.DateTime value);
+    partial void OnMedExpDateChanged();
+    partial void OnMedManufacturerChanging(string value);
+    partial void OnMedManufacturerChanged();
+    partial void OnMedQtyChanging(int value);
+    partial void OnMedQtyChanged();
+    partial void OnMedStatusChanging(string value);
+    partial void OnMedStatusChanged();
+    partial void OnMedLastUpdatedChanging(System.DateTime value);
+    partial void OnMedLastUpdatedChanged();
+    #endregion
+		
+		public tblMedicine()
+		{
+			this._tblPtMedHistories = new EntitySet<tblPtMedHistory>(new Action<tblPtMedHistory>(this.attach_tblPtMedHistories), new Action<tblPtMedHistory>(this.detach_tblPtMedHistories));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedicineID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MedicineID
+		{
+			get
+			{
+				return this._MedicineID;
+			}
+			set
+			{
+				if ((this._MedicineID != value))
+				{
+					this.OnMedicineIDChanging(value);
+					this.SendPropertyChanging();
+					this._MedicineID = value;
+					this.SendPropertyChanged("MedicineID");
+					this.OnMedicineIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedicineName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string MedicineName
+		{
+			get
+			{
+				return this._MedicineName;
+			}
+			set
+			{
+				if ((this._MedicineName != value))
+				{
+					this.OnMedicineNameChanging(value);
+					this.SendPropertyChanging();
+					this._MedicineName = value;
+					this.SendPropertyChanged("MedicineName");
+					this.OnMedicineNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedicineType", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string MedicineType
+		{
+			get
+			{
+				return this._MedicineType;
+			}
+			set
+			{
+				if ((this._MedicineType != value))
+				{
+					this.OnMedicineTypeChanging(value);
+					this.SendPropertyChanging();
+					this._MedicineType = value;
+					this.SendPropertyChanged("MedicineType");
+					this.OnMedicineTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedExpDate", DbType="Date NOT NULL")]
+		public System.DateTime MedExpDate
+		{
+			get
+			{
+				return this._MedExpDate;
+			}
+			set
+			{
+				if ((this._MedExpDate != value))
+				{
+					this.OnMedExpDateChanging(value);
+					this.SendPropertyChanging();
+					this._MedExpDate = value;
+					this.SendPropertyChanged("MedExpDate");
+					this.OnMedExpDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedManufacturer", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string MedManufacturer
+		{
+			get
+			{
+				return this._MedManufacturer;
+			}
+			set
+			{
+				if ((this._MedManufacturer != value))
+				{
+					this.OnMedManufacturerChanging(value);
+					this.SendPropertyChanging();
+					this._MedManufacturer = value;
+					this.SendPropertyChanged("MedManufacturer");
+					this.OnMedManufacturerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedQty", DbType="Int NOT NULL")]
+		public int MedQty
+		{
+			get
+			{
+				return this._MedQty;
+			}
+			set
+			{
+				if ((this._MedQty != value))
+				{
+					this.OnMedQtyChanging(value);
+					this.SendPropertyChanging();
+					this._MedQty = value;
+					this.SendPropertyChanged("MedQty");
+					this.OnMedQtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedStatus", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string MedStatus
+		{
+			get
+			{
+				return this._MedStatus;
+			}
+			set
+			{
+				if ((this._MedStatus != value))
+				{
+					this.OnMedStatusChanging(value);
+					this.SendPropertyChanging();
+					this._MedStatus = value;
+					this.SendPropertyChanged("MedStatus");
+					this.OnMedStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedLastUpdated", DbType="DateTime NOT NULL")]
+		public System.DateTime MedLastUpdated
+		{
+			get
+			{
+				return this._MedLastUpdated;
+			}
+			set
+			{
+				if ((this._MedLastUpdated != value))
+				{
+					this.OnMedLastUpdatedChanging(value);
+					this.SendPropertyChanging();
+					this._MedLastUpdated = value;
+					this.SendPropertyChanged("MedLastUpdated");
+					this.OnMedLastUpdatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblMedicine_tblPtMedHistory", Storage="_tblPtMedHistories", ThisKey="MedicineID", OtherKey="MedicineID")]
+		public EntitySet<tblPtMedHistory> tblPtMedHistories
+		{
+			get
+			{
+				return this._tblPtMedHistories;
+			}
+			set
+			{
+				this._tblPtMedHistories.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblPtMedHistories(tblPtMedHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblMedicine = this;
+		}
+		
+		private void detach_tblPtMedHistories(tblPtMedHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblMedicine = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblPatient")]
+	public partial class tblPatient : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PatientID;
+		
+		private string _PatientName;
+		
+		private int _PatientAge;
+		
+		private string _PatientGender;
+		
+		private string _PatientType;
+		
+		private string _PatientDesc;
+		
+		private string _PatientNum;
+		
+		private string _PatientEmail;
+		
+		private string _PatientAddress;
+		
+		private int _AdviserID;
+		
+		private EntitySet<tblClinicVisit> _tblClinicVisits;
+		
+		private EntitySet<tblEmergencyContact> _tblEmergencyContacts;
+		
+		private EntityRef<tblStudentAdviser> _tblStudentAdviser;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPatientIDChanging(int value);
+    partial void OnPatientIDChanged();
+    partial void OnPatientNameChanging(string value);
+    partial void OnPatientNameChanged();
+    partial void OnPatientAgeChanging(int value);
+    partial void OnPatientAgeChanged();
+    partial void OnPatientGenderChanging(string value);
+    partial void OnPatientGenderChanged();
+    partial void OnPatientTypeChanging(string value);
+    partial void OnPatientTypeChanged();
+    partial void OnPatientDescChanging(string value);
+    partial void OnPatientDescChanged();
+    partial void OnPatientNumChanging(string value);
+    partial void OnPatientNumChanged();
+    partial void OnPatientEmailChanging(string value);
+    partial void OnPatientEmailChanged();
+    partial void OnPatientAddressChanging(string value);
+    partial void OnPatientAddressChanged();
+    partial void OnAdviserIDChanging(int value);
+    partial void OnAdviserIDChanged();
+    #endregion
+		
+		public tblPatient()
+		{
+			this._tblClinicVisits = new EntitySet<tblClinicVisit>(new Action<tblClinicVisit>(this.attach_tblClinicVisits), new Action<tblClinicVisit>(this.detach_tblClinicVisits));
+			this._tblEmergencyContacts = new EntitySet<tblEmergencyContact>(new Action<tblEmergencyContact>(this.attach_tblEmergencyContacts), new Action<tblEmergencyContact>(this.detach_tblEmergencyContacts));
+			this._tblStudentAdviser = default(EntityRef<tblStudentAdviser>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PatientID
+		{
+			get
+			{
+				return this._PatientID;
+			}
+			set
+			{
+				if ((this._PatientID != value))
+				{
+					this.OnPatientIDChanging(value);
+					this.SendPropertyChanging();
+					this._PatientID = value;
+					this.SendPropertyChanged("PatientID");
+					this.OnPatientIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string PatientName
+		{
+			get
+			{
+				return this._PatientName;
+			}
+			set
+			{
+				if ((this._PatientName != value))
+				{
+					this.OnPatientNameChanging(value);
+					this.SendPropertyChanging();
+					this._PatientName = value;
+					this.SendPropertyChanged("PatientName");
+					this.OnPatientNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientAge", DbType="Int NOT NULL")]
+		public int PatientAge
+		{
+			get
+			{
+				return this._PatientAge;
+			}
+			set
+			{
+				if ((this._PatientAge != value))
+				{
+					this.OnPatientAgeChanging(value);
+					this.SendPropertyChanging();
+					this._PatientAge = value;
+					this.SendPropertyChanged("PatientAge");
+					this.OnPatientAgeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientGender", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string PatientGender
+		{
+			get
+			{
+				return this._PatientGender;
+			}
+			set
+			{
+				if ((this._PatientGender != value))
+				{
+					this.OnPatientGenderChanging(value);
+					this.SendPropertyChanging();
+					this._PatientGender = value;
+					this.SendPropertyChanged("PatientGender");
+					this.OnPatientGenderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientType", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string PatientType
+		{
+			get
+			{
+				return this._PatientType;
+			}
+			set
+			{
+				if ((this._PatientType != value))
+				{
+					this.OnPatientTypeChanging(value);
+					this.SendPropertyChanging();
+					this._PatientType = value;
+					this.SendPropertyChanged("PatientType");
+					this.OnPatientTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientDesc", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string PatientDesc
+		{
+			get
+			{
+				return this._PatientDesc;
+			}
+			set
+			{
+				if ((this._PatientDesc != value))
+				{
+					this.OnPatientDescChanging(value);
+					this.SendPropertyChanging();
+					this._PatientDesc = value;
+					this.SendPropertyChanged("PatientDesc");
+					this.OnPatientDescChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientNum", DbType="NChar(11) NOT NULL", CanBeNull=false)]
+		public string PatientNum
+		{
+			get
+			{
+				return this._PatientNum;
+			}
+			set
+			{
+				if ((this._PatientNum != value))
+				{
+					this.OnPatientNumChanging(value);
+					this.SendPropertyChanging();
+					this._PatientNum = value;
+					this.SendPropertyChanged("PatientNum");
+					this.OnPatientNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientEmail", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string PatientEmail
+		{
+			get
+			{
+				return this._PatientEmail;
+			}
+			set
+			{
+				if ((this._PatientEmail != value))
+				{
+					this.OnPatientEmailChanging(value);
+					this.SendPropertyChanging();
+					this._PatientEmail = value;
+					this.SendPropertyChanged("PatientEmail");
+					this.OnPatientEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientAddress", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string PatientAddress
+		{
+			get
+			{
+				return this._PatientAddress;
+			}
+			set
+			{
+				if ((this._PatientAddress != value))
+				{
+					this.OnPatientAddressChanging(value);
+					this.SendPropertyChanging();
+					this._PatientAddress = value;
+					this.SendPropertyChanged("PatientAddress");
+					this.OnPatientAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdviserID", DbType="Int NOT NULL")]
+		public int AdviserID
+		{
+			get
+			{
+				return this._AdviserID;
+			}
+			set
+			{
+				if ((this._AdviserID != value))
+				{
+					if (this._tblStudentAdviser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAdviserIDChanging(value);
+					this.SendPropertyChanging();
+					this._AdviserID = value;
+					this.SendPropertyChanged("AdviserID");
+					this.OnAdviserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblPatient_tblClinicVisit", Storage="_tblClinicVisits", ThisKey="PatientID", OtherKey="PatientID")]
+		public EntitySet<tblClinicVisit> tblClinicVisits
+		{
+			get
+			{
+				return this._tblClinicVisits;
+			}
+			set
+			{
+				this._tblClinicVisits.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblPatient_tblEmergencyContact", Storage="_tblEmergencyContacts", ThisKey="PatientID", OtherKey="PatientID")]
+		public EntitySet<tblEmergencyContact> tblEmergencyContacts
+		{
+			get
+			{
+				return this._tblEmergencyContacts;
+			}
+			set
+			{
+				this._tblEmergencyContacts.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblStudentAdviser_tblPatient", Storage="_tblStudentAdviser", ThisKey="AdviserID", OtherKey="AdviserID", IsForeignKey=true)]
+		public tblStudentAdviser tblStudentAdviser
+		{
+			get
+			{
+				return this._tblStudentAdviser.Entity;
+			}
+			set
+			{
+				tblStudentAdviser previousValue = this._tblStudentAdviser.Entity;
+				if (((previousValue != value) 
+							|| (this._tblStudentAdviser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblStudentAdviser.Entity = null;
+						previousValue.tblPatients.Remove(this);
+					}
+					this._tblStudentAdviser.Entity = value;
+					if ((value != null))
+					{
+						value.tblPatients.Add(this);
+						this._AdviserID = value.AdviserID;
+					}
+					else
+					{
+						this._AdviserID = default(int);
+					}
+					this.SendPropertyChanged("tblStudentAdviser");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblClinicVisits(tblClinicVisit entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblPatient = this;
+		}
+		
+		private void detach_tblClinicVisits(tblClinicVisit entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblPatient = null;
+		}
+		
+		private void attach_tblEmergencyContacts(tblEmergencyContact entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblPatient = this;
+		}
+		
+		private void detach_tblEmergencyContacts(tblEmergencyContact entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblPatient = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblPtMedHistory")]
+	public partial class tblPtMedHistory : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PtMedID;
+		
+		private int _VisitID;
+		
+		private int _MedicineID;
+		
+		private int _MedQtyGiven;
+		
+		private EntityRef<tblClinicVisit> _tblClinicVisit;
+		
+		private EntityRef<tblMedicine> _tblMedicine;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPtMedIDChanging(int value);
+    partial void OnPtMedIDChanged();
+    partial void OnVisitIDChanging(int value);
+    partial void OnVisitIDChanged();
+    partial void OnMedicineIDChanging(int value);
+    partial void OnMedicineIDChanged();
+    partial void OnMedQtyGivenChanging(int value);
+    partial void OnMedQtyGivenChanged();
+    #endregion
+		
+		public tblPtMedHistory()
+		{
+			this._tblClinicVisit = default(EntityRef<tblClinicVisit>);
+			this._tblMedicine = default(EntityRef<tblMedicine>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PtMedID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PtMedID
+		{
+			get
+			{
+				return this._PtMedID;
+			}
+			set
+			{
+				if ((this._PtMedID != value))
+				{
+					this.OnPtMedIDChanging(value);
+					this.SendPropertyChanging();
+					this._PtMedID = value;
+					this.SendPropertyChanged("PtMedID");
+					this.OnPtMedIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VisitID", DbType="Int NOT NULL")]
+		public int VisitID
+		{
+			get
+			{
+				return this._VisitID;
+			}
+			set
+			{
+				if ((this._VisitID != value))
+				{
+					if (this._tblClinicVisit.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnVisitIDChanging(value);
+					this.SendPropertyChanging();
+					this._VisitID = value;
+					this.SendPropertyChanged("VisitID");
+					this.OnVisitIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedicineID", DbType="Int NOT NULL")]
+		public int MedicineID
+		{
+			get
+			{
+				return this._MedicineID;
+			}
+			set
+			{
+				if ((this._MedicineID != value))
+				{
+					if (this._tblMedicine.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMedicineIDChanging(value);
+					this.SendPropertyChanging();
+					this._MedicineID = value;
+					this.SendPropertyChanged("MedicineID");
+					this.OnMedicineIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedQtyGiven", DbType="Int NOT NULL")]
+		public int MedQtyGiven
+		{
+			get
+			{
+				return this._MedQtyGiven;
+			}
+			set
+			{
+				if ((this._MedQtyGiven != value))
+				{
+					this.OnMedQtyGivenChanging(value);
+					this.SendPropertyChanging();
+					this._MedQtyGiven = value;
+					this.SendPropertyChanged("MedQtyGiven");
+					this.OnMedQtyGivenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblClinicVisit_tblPtMedHistory", Storage="_tblClinicVisit", ThisKey="VisitID", OtherKey="VisitID", IsForeignKey=true)]
+		public tblClinicVisit tblClinicVisit
+		{
+			get
+			{
+				return this._tblClinicVisit.Entity;
+			}
+			set
+			{
+				tblClinicVisit previousValue = this._tblClinicVisit.Entity;
+				if (((previousValue != value) 
+							|| (this._tblClinicVisit.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblClinicVisit.Entity = null;
+						previousValue.tblPtMedHistories.Remove(this);
+					}
+					this._tblClinicVisit.Entity = value;
+					if ((value != null))
+					{
+						value.tblPtMedHistories.Add(this);
+						this._VisitID = value.VisitID;
+					}
+					else
+					{
+						this._VisitID = default(int);
+					}
+					this.SendPropertyChanged("tblClinicVisit");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblMedicine_tblPtMedHistory", Storage="_tblMedicine", ThisKey="MedicineID", OtherKey="MedicineID", IsForeignKey=true)]
+		public tblMedicine tblMedicine
+		{
+			get
+			{
+				return this._tblMedicine.Entity;
+			}
+			set
+			{
+				tblMedicine previousValue = this._tblMedicine.Entity;
+				if (((previousValue != value) 
+							|| (this._tblMedicine.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblMedicine.Entity = null;
+						previousValue.tblPtMedHistories.Remove(this);
+					}
+					this._tblMedicine.Entity = value;
+					if ((value != null))
+					{
+						value.tblPtMedHistories.Add(this);
+						this._MedicineID = value.MedicineID;
+					}
+					else
+					{
+						this._MedicineID = default(int);
+					}
+					this.SendPropertyChanged("tblMedicine");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblPtSupplyHistory")]
+	public partial class tblPtSupplyHistory : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PtSupplyID;
+		
+		private int _VisitID;
+		
+		private int _SupplyID;
+		
+		private int _SupplyQtyGiven;
+		
+		private EntityRef<tblClinicVisit> _tblClinicVisit;
+		
+		private EntityRef<tblSupply> _tblSupply;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPtSupplyIDChanging(int value);
+    partial void OnPtSupplyIDChanged();
+    partial void OnVisitIDChanging(int value);
+    partial void OnVisitIDChanged();
+    partial void OnSupplyIDChanging(int value);
+    partial void OnSupplyIDChanged();
+    partial void OnSupplyQtyGivenChanging(int value);
+    partial void OnSupplyQtyGivenChanged();
+    #endregion
+		
+		public tblPtSupplyHistory()
+		{
+			this._tblClinicVisit = default(EntityRef<tblClinicVisit>);
+			this._tblSupply = default(EntityRef<tblSupply>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PtSupplyID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PtSupplyID
+		{
+			get
+			{
+				return this._PtSupplyID;
+			}
+			set
+			{
+				if ((this._PtSupplyID != value))
+				{
+					this.OnPtSupplyIDChanging(value);
+					this.SendPropertyChanging();
+					this._PtSupplyID = value;
+					this.SendPropertyChanged("PtSupplyID");
+					this.OnPtSupplyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VisitID", DbType="Int NOT NULL")]
+		public int VisitID
+		{
+			get
+			{
+				return this._VisitID;
+			}
+			set
+			{
+				if ((this._VisitID != value))
+				{
+					if (this._tblClinicVisit.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnVisitIDChanging(value);
+					this.SendPropertyChanging();
+					this._VisitID = value;
+					this.SendPropertyChanged("VisitID");
+					this.OnVisitIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyID", DbType="Int NOT NULL")]
+		public int SupplyID
+		{
+			get
+			{
+				return this._SupplyID;
+			}
+			set
+			{
+				if ((this._SupplyID != value))
+				{
+					if (this._tblSupply.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSupplyIDChanging(value);
+					this.SendPropertyChanging();
+					this._SupplyID = value;
+					this.SendPropertyChanged("SupplyID");
+					this.OnSupplyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyQtyGiven", DbType="Int NOT NULL")]
+		public int SupplyQtyGiven
+		{
+			get
+			{
+				return this._SupplyQtyGiven;
+			}
+			set
+			{
+				if ((this._SupplyQtyGiven != value))
+				{
+					this.OnSupplyQtyGivenChanging(value);
+					this.SendPropertyChanging();
+					this._SupplyQtyGiven = value;
+					this.SendPropertyChanged("SupplyQtyGiven");
+					this.OnSupplyQtyGivenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblClinicVisit_tblPtSupplyHistory", Storage="_tblClinicVisit", ThisKey="VisitID", OtherKey="VisitID", IsForeignKey=true)]
+		public tblClinicVisit tblClinicVisit
+		{
+			get
+			{
+				return this._tblClinicVisit.Entity;
+			}
+			set
+			{
+				tblClinicVisit previousValue = this._tblClinicVisit.Entity;
+				if (((previousValue != value) 
+							|| (this._tblClinicVisit.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblClinicVisit.Entity = null;
+						previousValue.tblPtSupplyHistories.Remove(this);
+					}
+					this._tblClinicVisit.Entity = value;
+					if ((value != null))
+					{
+						value.tblPtSupplyHistories.Add(this);
+						this._VisitID = value.VisitID;
+					}
+					else
+					{
+						this._VisitID = default(int);
+					}
+					this.SendPropertyChanged("tblClinicVisit");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblSupply_tblPtSupplyHistory", Storage="_tblSupply", ThisKey="SupplyID", OtherKey="SupplyID", IsForeignKey=true)]
+		public tblSupply tblSupply
+		{
+			get
+			{
+				return this._tblSupply.Entity;
+			}
+			set
+			{
+				tblSupply previousValue = this._tblSupply.Entity;
+				if (((previousValue != value) 
+							|| (this._tblSupply.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblSupply.Entity = null;
+						previousValue.tblPtSupplyHistories.Remove(this);
+					}
+					this._tblSupply.Entity = value;
+					if ((value != null))
+					{
+						value.tblPtSupplyHistories.Add(this);
+						this._SupplyID = value.SupplyID;
+					}
+					else
+					{
+						this._SupplyID = default(int);
+					}
+					this.SendPropertyChanged("tblSupply");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblStudentAdviser")]
+	public partial class tblStudentAdviser : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _AdviserID;
+		
+		private string _AdviserName;
+		
+		private string _AdviserEmail;
+		
+		private string _AdviserNum;
+		
+		private string _AdviserDept;
+		
+		private EntitySet<tblPatient> _tblPatients;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnAdviserIDChanging(int value);
+    partial void OnAdviserIDChanged();
+    partial void OnAdviserNameChanging(string value);
+    partial void OnAdviserNameChanged();
+    partial void OnAdviserEmailChanging(string value);
+    partial void OnAdviserEmailChanged();
+    partial void OnAdviserNumChanging(string value);
+    partial void OnAdviserNumChanged();
+    partial void OnAdviserDeptChanging(string value);
+    partial void OnAdviserDeptChanged();
+    #endregion
+		
+		public tblStudentAdviser()
+		{
+			this._tblPatients = new EntitySet<tblPatient>(new Action<tblPatient>(this.attach_tblPatients), new Action<tblPatient>(this.detach_tblPatients));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdviserID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int AdviserID
+		{
+			get
+			{
+				return this._AdviserID;
+			}
+			set
+			{
+				if ((this._AdviserID != value))
+				{
+					this.OnAdviserIDChanging(value);
+					this.SendPropertyChanging();
+					this._AdviserID = value;
+					this.SendPropertyChanged("AdviserID");
+					this.OnAdviserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdviserName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string AdviserName
+		{
+			get
+			{
+				return this._AdviserName;
+			}
+			set
+			{
+				if ((this._AdviserName != value))
+				{
+					this.OnAdviserNameChanging(value);
+					this.SendPropertyChanging();
+					this._AdviserName = value;
+					this.SendPropertyChanged("AdviserName");
+					this.OnAdviserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdviserEmail", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string AdviserEmail
+		{
+			get
+			{
+				return this._AdviserEmail;
+			}
+			set
+			{
+				if ((this._AdviserEmail != value))
+				{
+					this.OnAdviserEmailChanging(value);
+					this.SendPropertyChanging();
+					this._AdviserEmail = value;
+					this.SendPropertyChanged("AdviserEmail");
+					this.OnAdviserEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdviserNum", DbType="NChar(11) NOT NULL", CanBeNull=false)]
+		public string AdviserNum
+		{
+			get
+			{
+				return this._AdviserNum;
+			}
+			set
+			{
+				if ((this._AdviserNum != value))
+				{
+					this.OnAdviserNumChanging(value);
+					this.SendPropertyChanging();
+					this._AdviserNum = value;
+					this.SendPropertyChanged("AdviserNum");
+					this.OnAdviserNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdviserDept", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string AdviserDept
+		{
+			get
+			{
+				return this._AdviserDept;
+			}
+			set
+			{
+				if ((this._AdviserDept != value))
+				{
+					this.OnAdviserDeptChanging(value);
+					this.SendPropertyChanging();
+					this._AdviserDept = value;
+					this.SendPropertyChanged("AdviserDept");
+					this.OnAdviserDeptChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblStudentAdviser_tblPatient", Storage="_tblPatients", ThisKey="AdviserID", OtherKey="AdviserID")]
+		public EntitySet<tblPatient> tblPatients
+		{
+			get
+			{
+				return this._tblPatients;
+			}
+			set
+			{
+				this._tblPatients.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblPatients(tblPatient entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblStudentAdviser = this;
+		}
+		
+		private void detach_tblPatients(tblPatient entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblStudentAdviser = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblSupplies")]
+	public partial class tblSupply : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _SupplyID;
+		
+		private string _SupplyName;
+		
+		private System.Nullable<System.DateTime> _SupplyExpDate;
+		
+		private string _SupplierName;
+		
+		private int _SupplyQty;
+		
+		private string _SupplyStatus;
+		
+		private decimal _SupplyPrice;
+		
+		private System.DateTime _SupplyLastUpdated;
+		
+		private EntitySet<tblPtSupplyHistory> _tblPtSupplyHistories;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSupplyIDChanging(int value);
+    partial void OnSupplyIDChanged();
+    partial void OnSupplyNameChanging(string value);
+    partial void OnSupplyNameChanged();
+    partial void OnSupplyExpDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnSupplyExpDateChanged();
+    partial void OnSupplierNameChanging(string value);
+    partial void OnSupplierNameChanged();
+    partial void OnSupplyQtyChanging(int value);
+    partial void OnSupplyQtyChanged();
+    partial void OnSupplyStatusChanging(string value);
+    partial void OnSupplyStatusChanged();
+    partial void OnSupplyPriceChanging(decimal value);
+    partial void OnSupplyPriceChanged();
+    partial void OnSupplyLastUpdatedChanging(System.DateTime value);
+    partial void OnSupplyLastUpdatedChanged();
+    #endregion
+		
+		public tblSupply()
+		{
+			this._tblPtSupplyHistories = new EntitySet<tblPtSupplyHistory>(new Action<tblPtSupplyHistory>(this.attach_tblPtSupplyHistories), new Action<tblPtSupplyHistory>(this.detach_tblPtSupplyHistories));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int SupplyID
+		{
+			get
+			{
+				return this._SupplyID;
+			}
+			set
+			{
+				if ((this._SupplyID != value))
+				{
+					this.OnSupplyIDChanging(value);
+					this.SendPropertyChanging();
+					this._SupplyID = value;
+					this.SendPropertyChanged("SupplyID");
+					this.OnSupplyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string SupplyName
+		{
+			get
+			{
+				return this._SupplyName;
+			}
+			set
+			{
+				if ((this._SupplyName != value))
+				{
+					this.OnSupplyNameChanging(value);
+					this.SendPropertyChanging();
+					this._SupplyName = value;
+					this.SendPropertyChanged("SupplyName");
+					this.OnSupplyNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyExpDate", DbType="Date")]
+		public System.Nullable<System.DateTime> SupplyExpDate
+		{
+			get
+			{
+				return this._SupplyExpDate;
+			}
+			set
+			{
+				if ((this._SupplyExpDate != value))
+				{
+					this.OnSupplyExpDateChanging(value);
+					this.SendPropertyChanging();
+					this._SupplyExpDate = value;
+					this.SendPropertyChanged("SupplyExpDate");
+					this.OnSupplyExpDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplierName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string SupplierName
+		{
+			get
+			{
+				return this._SupplierName;
+			}
+			set
+			{
+				if ((this._SupplierName != value))
+				{
+					this.OnSupplierNameChanging(value);
+					this.SendPropertyChanging();
+					this._SupplierName = value;
+					this.SendPropertyChanged("SupplierName");
+					this.OnSupplierNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyQty", DbType="Int NOT NULL")]
+		public int SupplyQty
+		{
+			get
+			{
+				return this._SupplyQty;
+			}
+			set
+			{
+				if ((this._SupplyQty != value))
+				{
+					this.OnSupplyQtyChanging(value);
+					this.SendPropertyChanging();
+					this._SupplyQty = value;
+					this.SendPropertyChanged("SupplyQty");
+					this.OnSupplyQtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyStatus", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string SupplyStatus
+		{
+			get
+			{
+				return this._SupplyStatus;
+			}
+			set
+			{
+				if ((this._SupplyStatus != value))
+				{
+					this.OnSupplyStatusChanging(value);
+					this.SendPropertyChanging();
+					this._SupplyStatus = value;
+					this.SendPropertyChanged("SupplyStatus");
+					this.OnSupplyStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyPrice", DbType="Money NOT NULL")]
+		public decimal SupplyPrice
+		{
+			get
+			{
+				return this._SupplyPrice;
+			}
+			set
+			{
+				if ((this._SupplyPrice != value))
+				{
+					this.OnSupplyPriceChanging(value);
+					this.SendPropertyChanging();
+					this._SupplyPrice = value;
+					this.SendPropertyChanged("SupplyPrice");
+					this.OnSupplyPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyLastUpdated", DbType="DateTime NOT NULL")]
+		public System.DateTime SupplyLastUpdated
+		{
+			get
+			{
+				return this._SupplyLastUpdated;
+			}
+			set
+			{
+				if ((this._SupplyLastUpdated != value))
+				{
+					this.OnSupplyLastUpdatedChanging(value);
+					this.SendPropertyChanging();
+					this._SupplyLastUpdated = value;
+					this.SendPropertyChanged("SupplyLastUpdated");
+					this.OnSupplyLastUpdatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblSupply_tblPtSupplyHistory", Storage="_tblPtSupplyHistories", ThisKey="SupplyID", OtherKey="SupplyID")]
+		public EntitySet<tblPtSupplyHistory> tblPtSupplyHistories
+		{
+			get
+			{
+				return this._tblPtSupplyHistories;
+			}
+			set
+			{
+				this._tblPtSupplyHistories.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblPtSupplyHistories(tblPtSupplyHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblSupply = this;
+		}
+		
+		private void detach_tblPtSupplyHistories(tblPtSupplyHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblSupply = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblUsers")]
+	public partial class tblUser : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserID;
+		
+		private string _UserFullName;
+		
+		private string _UserName;
+		
+		private string _UserPassword;
+		
+		private string _UserEmail;
+		
+		private string _UserContact;
+		
+		private string _UserType;
+		
+		private EntitySet<tblClinicVisit> _tblClinicVisits;
+		
+		private EntitySet<tblLog> _tblLogs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
+    partial void OnUserFullNameChanging(string value);
+    partial void OnUserFullNameChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnUserPasswordChanging(string value);
+    partial void OnUserPasswordChanged();
+    partial void OnUserEmailChanging(string value);
+    partial void OnUserEmailChanged();
+    partial void OnUserContactChanging(string value);
+    partial void OnUserContactChanged();
+    partial void OnUserTypeChanging(string value);
+    partial void OnUserTypeChanged();
+    #endregion
+		
+		public tblUser()
+		{
+			this._tblClinicVisits = new EntitySet<tblClinicVisit>(new Action<tblClinicVisit>(this.attach_tblClinicVisits), new Action<tblClinicVisit>(this.detach_tblClinicVisits));
+			this._tblLogs = new EntitySet<tblLog>(new Action<tblLog>(this.attach_tblLogs), new Action<tblLog>(this.detach_tblLogs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserFullName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string UserFullName
+		{
+			get
+			{
+				return this._UserFullName;
+			}
+			set
+			{
+				if ((this._UserFullName != value))
+				{
+					this.OnUserFullNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserFullName = value;
+					this.SendPropertyChanged("UserFullName");
+					this.OnUserFullNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserPassword", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserPassword
+		{
+			get
+			{
+				return this._UserPassword;
+			}
+			set
+			{
+				if ((this._UserPassword != value))
+				{
+					this.OnUserPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._UserPassword = value;
+					this.SendPropertyChanged("UserPassword");
+					this.OnUserPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserEmail", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string UserEmail
+		{
+			get
+			{
+				return this._UserEmail;
+			}
+			set
+			{
+				if ((this._UserEmail != value))
+				{
+					this.OnUserEmailChanging(value);
+					this.SendPropertyChanging();
+					this._UserEmail = value;
+					this.SendPropertyChanged("UserEmail");
+					this.OnUserEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserContact", DbType="NChar(11) NOT NULL", CanBeNull=false)]
+		public string UserContact
+		{
+			get
+			{
+				return this._UserContact;
+			}
+			set
+			{
+				if ((this._UserContact != value))
+				{
+					this.OnUserContactChanging(value);
+					this.SendPropertyChanging();
+					this._UserContact = value;
+					this.SendPropertyChanged("UserContact");
+					this.OnUserContactChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserType", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserType
+		{
+			get
+			{
+				return this._UserType;
+			}
+			set
+			{
+				if ((this._UserType != value))
+				{
+					this.OnUserTypeChanging(value);
+					this.SendPropertyChanging();
+					this._UserType = value;
+					this.SendPropertyChanged("UserType");
+					this.OnUserTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblUser_tblClinicVisit", Storage="_tblClinicVisits", ThisKey="UserID", OtherKey="UserID")]
+		public EntitySet<tblClinicVisit> tblClinicVisits
+		{
+			get
+			{
+				return this._tblClinicVisits;
+			}
+			set
+			{
+				this._tblClinicVisits.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblUser_tblLog", Storage="_tblLogs", ThisKey="UserID", OtherKey="UserID")]
+		public EntitySet<tblLog> tblLogs
+		{
+			get
+			{
+				return this._tblLogs;
+			}
+			set
+			{
+				this._tblLogs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblClinicVisits(tblClinicVisit entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblUser = this;
+		}
+		
+		private void detach_tblClinicVisits(tblClinicVisit entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblUser = null;
+		}
+		
+		private void attach_tblLogs(tblLog entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblUser = this;
+		}
+		
+		private void detach_tblLogs(tblLog entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblUser = null;
 		}
 	}
 	

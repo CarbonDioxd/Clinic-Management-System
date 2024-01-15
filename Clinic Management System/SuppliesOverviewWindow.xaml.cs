@@ -19,9 +19,16 @@ namespace Clinic_Management_System
     /// </summary>
     public partial class SuppliesOverviewWindow : Window
     {
+        ClinicDatabaseDataContext db_con = ConstantValues.DBConnectionString;
         public SuppliesOverviewWindow()
         {
             InitializeComponent();
+            Fill();
+        }
+
+        private void Fill()
+        {
+
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
