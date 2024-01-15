@@ -7,70 +7,21 @@
         mc:Ignorable="d"
         Title="SuppliesOverviewWindow" Height="500" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
-    <Window.Resources>
-        <!-- Define the base style with common properties -->
-        <Style x:Key="BaseStyle" TargetType="Control">
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="4"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Background" Value="White"/>
-        </Style>
-
-        <!-- Define styles based on the base style for TextBox and Button -->
-        <Style x:Key="RoundedTB" TargetType="TextBox" BasedOn="{StaticResource BaseStyle}">
-            <Setter Property="BorderBrush" Value="Gray"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                Background="{TemplateBinding Background}" 
-                                CornerRadius="10">
-                            <ScrollViewer x:Name="PART_ContentHost"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="RoundedButton" TargetType="Button" BasedOn="{StaticResource BaseStyle}">
-            <Setter Property="BorderBrush" Value="Blue"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                Background="{TemplateBinding Background}" 
-                                CornerRadius="5">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-
-
-    <Grid>
-        <Grid Background="#FF582723">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="39*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <ListBox x:Name="lbMedicineResults" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="19,119,42,76" SelectionChanged="lbMedicineResults_SelectionChanged" Grid.ColumnSpan="2"/>
-            <Button x:Name="btnBack" Style="{StaticResource RoundedButton}" Content="Back" HorizontalAlignment="Left" Margin="664,426,0,0" VerticalAlignment="Top" Height="30" Width="97" Background="#FFEBBC38" Foreground="Black" Click="btnBack_Click" Grid.Column="1" />
-            <Button x:Name="btnAddInventory" Style="{StaticResource RoundedButton}" Content="Add Inventory" HorizontalAlignment="Left" Margin="19,426,0,0" VerticalAlignment="Top" Height="30" Width="138" Background="#FFEBBC38" Foreground="Black" Click="btnAddInventory_Click" Grid.ColumnSpan="2" />
-            <Label Content="Supply" HorizontalAlignment="Left" Margin="19,9,0,0" VerticalAlignment="Top" Foreground="White" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="txtMedicineName" Style="{StaticResource RoundedTB}" HorizontalAlignment="Left" Margin="19,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="25" Grid.ColumnSpan="2" />
-            <Button x:Name="btnSearch" Style="{StaticResource RoundedButton}" Content="Search" HorizontalAlignment="Left" Margin="264,35,0,0" VerticalAlignment="Top" Height="25" Width="74" Background="#FFEBBC38" Foreground="#FF101010" Click="btnSearch_Click_1" Grid.Column="1" />
-            <Image HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="78" Source="/Resource-Logo.png" Margin="685,4,0,0" Opacity="0.3" RenderTransformOrigin="0.251,0.488" Grid.Column="1"/>
-            <ComboBox x:Name="cbBrandName" HorizontalAlignment="Left" Margin="80,75,0,0" VerticalAlignment="Top" Width="160" Height="25" BorderBrush="White" SelectionChanged="cbBrandName_SelectionChanged" Grid.Column="1"/>
-            <Label Content="Supplier" HorizontalAlignment="Left" Margin="19,74,0,0" VerticalAlignment="Top" Foreground="White" Grid.ColumnSpan="2"/>
-            <ComboBox x:Name="cbExpDate" HorizontalAlignment="Left" Margin="447,40,0,0" VerticalAlignment="Top" Width="190" Height="26" BorderBrush="White" SelectionChanged="cbExpDate_SelectionChanged" Grid.Column="1"/>
-            <Label Content="Exp. Date " HorizontalAlignment="Left" Margin="365,40,0,0" VerticalAlignment="Top" Foreground="White" Grid.Column="1"/>
-        </Grid>
+    <Grid Background="#FF582723">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="lbSupplyResults" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="19,119,42,76" SelectionChanged="lbMedicineResults_SelectionChanged"/>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="684,426,0,0" VerticalAlignment="Top" Height="30" Width="97" Background="#FFEBBC38" Foreground="Black" Click="btnBack_Click" />
+        <Button x:Name="btnAddSupply" Content="Add Supply" HorizontalAlignment="Left" Margin="19,426,0,0" VerticalAlignment="Top" Height="30" Width="138" Background="#FFEBBC38" Foreground="Black" Click="btnAddInventory_Click" />
+        <TextBox x:Name="txtSupplyName" HorizontalAlignment="Left" Margin="19,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="25"/>
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="284,35,0,0" VerticalAlignment="Top" Height="25" Width="74" Background="#FFEBBC38" Foreground="#FF101010" Click="btnSearch_Click_1" />
+        <Image HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="78" Source="/Resource-Logo.png" Margin="705,4,0,0" Opacity="0.3" RenderTransformOrigin="0.251,0.488"/>
+        <ComboBox x:Name="cbBrandName" HorizontalAlignment="Left" Margin="100,75,0,0" VerticalAlignment="Top" Width="160" Height="25" BorderBrush="White" SelectionChanged="cbBrandName_SelectionChanged"/>
+        <Label Content="Supply Name" HorizontalAlignment="Left" Margin="19,74,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox x:Name="cbExpDate" HorizontalAlignment="Left" Margin="467,40,0,0" VerticalAlignment="Top" Width="190" Height="26" BorderBrush="White" SelectionChanged="cbExpDate_SelectionChanged"/>
+        <Label Content="Exp. Date " HorizontalAlignment="Left" Margin="385,40,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox x:Name="cbSupplier" HorizontalAlignment="Left" Margin="469,76,0,0" VerticalAlignment="Top" Width="188" Height="25" BorderBrush="White" SelectionChanged="cbManufacturer_SelectionChanged"/>
+        <Label Content="Supplier" HorizontalAlignment="Left" Margin="385,75,0,0" VerticalAlignment="Top" Foreground="White"/>
     </Grid>
 </Window>
