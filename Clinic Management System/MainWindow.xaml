@@ -6,14 +6,66 @@
         xmlns:local="clr-namespace:Clinic_Management_System"
         mc:Ignorable="d"
         Title="Login" Height="500" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" KeyDown="Window_KeyDown">
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+          x:Name="Bd" BorderBrush="Gray"
+          BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="passwordbox" TargetType="{x:Type PasswordBox}">
+            <Border Background="{TemplateBinding Background}" 
+        x:Name="Bd" BorderBrush="Gray"
+        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                <ScrollViewer Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" Background="#FF582723" BorderThickness="1" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
     <Grid Background="#FF582723" >
         <Rectangle RadiusX="5" RadiusY="5" HorizontalAlignment="Center" Height="395" Width="608" VerticalAlignment="Center" Fill="#FFEBBC38"/>
         <Rectangle RadiusX="5" RadiusY="5" HorizontalAlignment="Left" Height="395" Width="374" VerticalAlignment="Center" Fill="#FFD7D1D1" Margin="280,0,0,0"/>
         <Label Content="Email" HorizontalAlignment="Left" Margin="318,167,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="320,237,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox x:Name="txtEmailAddress" HorizontalAlignment="Left" Margin="318,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295" Height="30"/>
-        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Width="293" Height="30" Margin="320,268,0,0" />
-        <Button x:Name="btnLogin" Content="SIGN IN" HorizontalAlignment="Left" Margin="396,327,0,0" VerticalAlignment="Top" Height="30" Width="138" Background="#FF582723" Foreground="White" Click="btnLogin_Click"/>
+        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="txtEmailAddress" HorizontalAlignment="Left" Margin="318,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295" Height="30"/>
+        <PasswordBox Template="{StaticResource passwordbox}" x:Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Width="293" Height="30" Margin="320,268,0,0" />
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnLogin" Content="SIGN IN" HorizontalAlignment="Left" Margin="396,327,0,0" VerticalAlignment="Top" Height="30" Width="138" Background="#FF582723" Foreground="White" Click="btnLogin_Click"/>
         <Image HorizontalAlignment="Left" Height="274" VerticalAlignment="Center" Width="283" Source="/Resource-Logo.png" Margin="24,0,0,0" Opacity="0.3"/>
         <Label Content="LOGIN" HorizontalAlignment="Left" Margin="382,85,0,0" VerticalAlignment="Top" FontSize="25" FontWeight="Bold"/>
         <Label Content="Enter your existing account" HorizontalAlignment="Left" Margin="380,122,0,0" VerticalAlignment="Top"/>

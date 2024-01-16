@@ -6,6 +6,39 @@
         xmlns:local="clr-namespace:Clinic_Management_System"
         mc:Ignorable="d"
         Title="MainMenu1" Height="750" Width="1196" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+          x:Name="Bd" BorderBrush="Gray"
+          BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" Background="#FF720000" BorderThickness="1" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid Background="#FF582723">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -15,24 +48,24 @@
         <Rectangle RadiusX="5" RadiusY="5" HorizontalAlignment="Left" Height="581" Width="1151" VerticalAlignment="Top" Fill="#FFEBBC38" Margin="19,139,0,0"/>
         <Rectangle RadiusX="5" RadiusY="5" HorizontalAlignment="Left" Height="290" Width="698" VerticalAlignment="Top" Fill="White" Opacity="0.8" Margin="446,165,0,0"/>
         <Rectangle RadiusX="5" RadiusY="5" HorizontalAlignment="Left" Height="204" Width="698" VerticalAlignment="Top" Fill="White" Opacity="0.8" Margin="446,484,0,0"/>
-        <Button x:Name="btnClinicOverview" Content="Medicine Overview" HorizontalAlignment="Left" Margin="490,264,0,0" VerticalAlignment="Top" Height="72" Width="286" FontSize="20" Background="#FF582723" Foreground="White" Click="btnClinicOverview_Click"  />
-        <Button x:Name="btnAddItem" Content="Add Medicine to Inventory" HorizontalAlignment="Left" Margin="490,342,0,0" VerticalAlignment="Top" Height="72" Width="286" BorderBrush="#FF707070" FontSize="20" Background="#FF582723" Foreground="White" Click="btnAddItem_Click" />
-        <Button x:Name="btnViewPatient" Content="View Patient Details" HorizontalAlignment="Left" Margin="490,580,0,0" VerticalAlignment="Top" Height="74" Width="286" FontSize="20" Background="#FF582723" Foreground="White" Click="btnViewPatient_Click" />
-        <Button x:Name="btnRegisterPatient" Content="Register Patient" HorizontalAlignment="Left" Margin="794,580,0,0" VerticalAlignment="Top" Height="74" Width="286" BorderBrush="#FF707070" FontSize="20" Background="#FF582723" Foreground="White" Click="btnRegisterPatient_Click" />
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnClinicOverview" Content="Medicine Overview" HorizontalAlignment="Left" Margin="490,264,0,0" VerticalAlignment="Top" Height="72" Width="286" FontSize="20" Background="#FF582723" Foreground="White" Click="btnClinicOverview_Click"  />
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnAddItem" Content="Add Medicine to Inventory" HorizontalAlignment="Left" Margin="490,342,0,0" VerticalAlignment="Top" Height="72" Width="286" BorderBrush="#FF707070" FontSize="20" Background="#FF582723" Foreground="White" Click="btnAddItem_Click" />
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnViewPatient" Content="View Patient Details" HorizontalAlignment="Left" Margin="490,580,0,0" VerticalAlignment="Top" Height="74" Width="286" FontSize="20" Background="#FF582723" Foreground="White" Click="btnViewPatient_Click" />
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnRegisterPatient" Content="Register Patient" HorizontalAlignment="Left" Margin="794,580,0,0" VerticalAlignment="Top" Height="74" Width="286" BorderBrush="#FF707070" FontSize="20" Background="#FF582723" Foreground="White" Click="btnRegisterPatient_Click" />
         <Label Content="CLINIC INVENTORY" HorizontalAlignment="Left" Margin="676,192,0,0" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" Foreground="#FF252525"/>
         <Label Content="PATIENT PROFILE" HorizontalAlignment="Left" Margin="688,509,0,0" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" Foreground="#FF252525"/>
         <Label Content="MEDICAL PROFESSIONAL" HorizontalAlignment="Left" Margin="125,77,0,0" VerticalAlignment="Top"/>
         <Label x:Name="MedFN" Content="Lastname, Firstname" HorizontalAlignment="Left" Margin="125,57,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="40,28,0,0" VerticalAlignment="Top" Width="100" Source="/Resource-ID.png"/>
-        <Button x:Name="btnLogOut" Content="Log Out" HorizontalAlignment="Left" Margin="543,20,0,0" VerticalAlignment="Top" Height="27" Width="119" Background="#FF582723" Foreground="White" Click="btnLogOut_Click"  />
-        <Button x:Name="btnSuppliesOverview" Content="Supplies Overview" HorizontalAlignment="Left" Margin="790,264,0,0" VerticalAlignment="Top" Height="74" Width="286" BorderBrush="#FF707070" FontSize="20" Background="#FF582723" Foreground="White" Click="btnSuppliesOverview_Click"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnLogOut" Content="Log Out" HorizontalAlignment="Left" Margin="543,20,0,0" VerticalAlignment="Top" Height="27" Width="119" Background="#FF582723" Foreground="White" Click="btnLogOut_Click"  />
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnSuppliesOverview" Content="Supplies Overview" HorizontalAlignment="Left" Margin="790,264,0,0" VerticalAlignment="Top" Height="74" Width="286" BorderBrush="#FF707070" FontSize="20" Background="#FF582723" Foreground="White" Click="btnSuppliesOverview_Click"/>
         <Rectangle RadiusX="5" RadiusY="5" HorizontalAlignment="Left" Height="523" Width="384" VerticalAlignment="Top" Fill="White" Opacity="0.8" Margin="40,165,0,0"/>
         <Rectangle HorizontalAlignment="Left" Height="9" Margin="790,725,0,0" Stroke="#FF582723" VerticalAlignment="Top" Width="10"/>
-        <Button x:Name="btnClinicVisits" Content="Log Clinic Visit" HorizontalAlignment="Left" Margin="89,314,0,0" VerticalAlignment="Top" Height="74" Width="286" FontSize="20" Background="#FF582723" Foreground="White" Click="btnClinicVisits_Click"   />
-        <Button x:Name="btnTimeOut" Content="Patient Time Out" HorizontalAlignment="Left" Margin="89,430,0,0" VerticalAlignment="Top" Height="73" Width="286" FontSize="20" Background="#FF582723" Foreground="White" Click="btnTimeOut_Click" />
-        <Button x:Name="btnAddSupply" Content="Add Supply to Inventory" HorizontalAlignment="Left" Margin="790,343,0,0" VerticalAlignment="Top" Height="72" Width="286" BorderBrush="#FF707070" FontSize="20" Background="#FF582723" Foreground="White" Click="btnAddSupply_Click"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnClinicVisits" Content="Log Clinic Visit" HorizontalAlignment="Left" Margin="89,314,0,0" VerticalAlignment="Top" Height="74" Width="286" FontSize="20" Background="#FF582723" Foreground="White" Click="btnClinicVisits_Click"   />
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnTimeOut" Content="Patient Time Out" HorizontalAlignment="Left" Margin="89,430,0,0" VerticalAlignment="Top" Height="73" Width="286" FontSize="20" Background="#FF582723" Foreground="White" Click="btnTimeOut_Click" />
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnAddSupply" Content="Add Supply to Inventory" HorizontalAlignment="Left" Margin="790,343,0,0" VerticalAlignment="Top" Height="72" Width="286" BorderBrush="#FF707070" FontSize="20" Background="#FF582723" Foreground="White" Click="btnAddSupply_Click"/>
         <Label Content="CLINIC LOGS" HorizontalAlignment="Left" Margin="152,214,0,0" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" Foreground="#FF252525"/>
-        <Button x:Name="btnEmail" Content="Compose Email" HorizontalAlignment="Left" Margin="89,544,0,0" VerticalAlignment="Top" Height="73" Width="286" FontSize="20" Background="#FF582723" Foreground="White" Click="btnEmail_Click" />
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnEmail" Content="Compose Email" HorizontalAlignment="Left" Margin="89,544,0,0" VerticalAlignment="Top" Height="73" Width="286" FontSize="20" Background="#FF582723" Foreground="White" Click="btnEmail_Click" />
         <Rectangle HorizontalAlignment="Left" Height="10" Margin="1186,720,0,0" Stroke="#FF582723" VerticalAlignment="Top" Width="10"/>
 
 
