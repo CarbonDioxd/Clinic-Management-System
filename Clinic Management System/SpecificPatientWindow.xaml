@@ -5,7 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clinic_Management_System"
         mc:Ignorable="d"
-        Title="SpecificPatientWindow" Height="800" Width="800" WindowStartupLocation="CenterScreen">
+        Title="SpecificPatientWindow" Height="800" ResizeMode="NoResize" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+          x:Name="Bd" BorderBrush="Gray"
+          BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" Background="#FFEBBC38" BorderThickness="1" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid Background="#FF582723">
         <Rectangle RadiusX="5" RadiusY="5" HorizontalAlignment="Center" Height="153" Width="730" VerticalAlignment="Top" Fill="White" Opacity="0.8" Margin="0,350,0,0"/>
         <Rectangle RadiusX="5" RadiusY="5" HorizontalAlignment="Center" Height="231" Width="730" VerticalAlignment="Top" Fill="White" Opacity="0.8" Margin="0,61,0,0"/>
@@ -22,9 +55,9 @@
         <Label Content="Emergency Contact Email Address" HorizontalAlignment="Left" Margin="508,423,0,0" VerticalAlignment="Top" Foreground="Black"/>
         <Label Content="Patient Details" HorizontalAlignment="Left" Margin="30,13,0,0" VerticalAlignment="Top" FontSize="25" Foreground="White" FontWeight="Bold"/>
         <Label Content="Emergency Information" HorizontalAlignment="Left" Margin="37,302,0,0" VerticalAlignment="Top" FontSize="25" Foreground="White" FontWeight="Bold"/>
-        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="663,736,0,18" Width="104" Background="#FFEBBC38" Foreground="Black" Click="btnBack_Click"/>
         <Image HorizontalAlignment="Left" Height="86" VerticalAlignment="Top" Width="78" Source="/Resource-Logo.png" Margin="689,11,0,0" Opacity="0.3" RenderTransformOrigin="0.251,0.488"/>
         <Label Content="Email Address" HorizontalAlignment="Left" Margin="508,205,0,0" VerticalAlignment="Top" Foreground="Black"/>
+        <Button  Style="{StaticResource RoundedButtonStyle}" x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="653,721,0,0" VerticalAlignment="Top" Height="30" Width="104" Background="#FFEBBC38" Foreground="Black" Click="btnBack_Click"/>
         <Label Content="Contact Number" HorizontalAlignment="Left" Margin="337,361,0,0" VerticalAlignment="Top" Foreground="Black"/>
         <TextBlock x:Name="txtName" HorizontalAlignment="Left" Margin="144,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.39,0.667" Height="28" Width="320" Background="White" Opacity="0.5"/>
         <TextBlock x:Name="txtType" HorizontalAlignment="Left" Margin="614,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.39,0.667" Height="28" Width="106" Background="White" Opacity="0.5"/>
