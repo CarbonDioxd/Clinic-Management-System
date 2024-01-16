@@ -6,15 +6,48 @@
         xmlns:local="clr-namespace:Clinic_Management_System"
         mc:Ignorable="d"
         Title="ClinicInventoryWindow" Height="500" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Gray"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" Background="White" BorderThickness="1" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid Background="#FF582723">
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="484.04"/>
         </Grid.RowDefinitions>
         <ListBox x:Name="lbMedicineResults" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="19,119,42,76" SelectionChanged="lbMedicineResults_SelectionChanged"/>
-        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="684,426,0,0" VerticalAlignment="Top" Height="30" Width="97" Background="#FFEBBC38" Foreground="Black" Click="btnBack_Click" />
-        <Button x:Name="btnAddInventory" Content="Add Inventory" HorizontalAlignment="Left" Margin="19,426,0,0" VerticalAlignment="Top" Height="30" Width="138" Background="#FFEBBC38" Foreground="Black" Click="btnAddInventory_Click" />
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="684,426,0,0" VerticalAlignment="Top" Height="30" Width="97" Background="#FFEBBC38" Foreground="Black" Click="btnBack_Click" />
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnAddInventory" Content="Add Inventory" HorizontalAlignment="Left" Margin="19,426,0,0" VerticalAlignment="Top" Height="30" Width="138" Background="#FFEBBC38" Foreground="Black" Click="btnAddInventory_Click" />
         <Label Content="Medicine" HorizontalAlignment="Left" Margin="19,9,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox x:Name="txtMedicineName" HorizontalAlignment="Left" Margin="19,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="25" TextChanged="txtMedicineName_TextChanged"/>
+        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="txtMedicineName" HorizontalAlignment="Left" Margin="19,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Height="25" TextChanged="txtMedicineName_TextChanged"/>
         <Image HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="78" Source="/Resource-Logo.png" Margin="705,4,0,0" Opacity="0.3" RenderTransformOrigin="0.251,0.488"/>
         <ComboBox x:Name="cbBrandName" HorizontalAlignment="Left" Margin="100,75,0,0" VerticalAlignment="Top" Width="160" Height="25" BorderBrush="White" SelectionChanged="cbBrandName_SelectionChanged"/>
         <Label Content="Brand Name" HorizontalAlignment="Left" Margin="19,74,0,0" VerticalAlignment="Top" Foreground="White"/>

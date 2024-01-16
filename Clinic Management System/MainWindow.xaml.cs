@@ -129,5 +129,13 @@ namespace Clinic_Management_System
             }
             return response;
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key  == Key.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
+        }
     }
 }

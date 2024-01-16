@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clinic_Management_System"
         mc:Ignorable="d"
-        Title="Login" Height="500" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Login" Height="500" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" KeyDown="Window_KeyDown">
     <Grid Background="#FF582723" >
         <Rectangle RadiusX="5" RadiusY="5" HorizontalAlignment="Center" Height="395" Width="608" VerticalAlignment="Center" Fill="#FFEBBC38"/>
         <Rectangle RadiusX="5" RadiusY="5" HorizontalAlignment="Left" Height="395" Width="374" VerticalAlignment="Center" Fill="#FFD7D1D1" Margin="280,0,0,0"/>
