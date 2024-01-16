@@ -6,13 +6,46 @@
         xmlns:local="clr-namespace:Clinic_Management_System"
         mc:Ignorable="d"
         Title="PatientWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+            x:Name="Bd" BorderBrush="Gray"
+            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" Background="#FFEBBC38" BorderThickness="1" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid Background="#FF582723">
         <ListBox x:Name="lbPatientResults" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="19,107,42,88" SelectionChanged="lbResults_SelectionChanged"/>
-        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="681,413,0,0" VerticalAlignment="Top" Height="30" Width="97" Background="#FFEBBC38" Foreground="Black" Click="btnBack_Click"/>
-        <Button x:Name="btnRegisterPatient" Content="Register Patient" HorizontalAlignment="Left" Margin="16,413,0,0" VerticalAlignment="Top" Height="30" Width="138" Background="#FFEBBC38" Foreground="Black" Click="btnRegisterPatient_Click" />
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="681,413,0,0" VerticalAlignment="Top" Height="30" Width="97" Background="#FFEBBC38" Foreground="Black" Click="btnBack_Click"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnRegisterPatient" Content="Register Patient" HorizontalAlignment="Left" Margin="16,413,0,0" VerticalAlignment="Top" Height="30" Width="138" Background="#FFEBBC38" Foreground="Black" Click="btnRegisterPatient_Click" />
         <Label Content="Patient's Name" HorizontalAlignment="Left" Margin="19,12,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox x:Name="txtPatientName" HorizontalAlignment="Left" Margin="19,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295" Height="25"/>
-        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="326,38,0,0" VerticalAlignment="Top" Height="25" Width="74" Background="#FFEBBC38" Foreground="#FF101010" Click="btnSearch_Click"/>
+        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="txtPatientName" HorizontalAlignment="Left" Margin="19,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295" Height="25"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="326,38,0,0" VerticalAlignment="Top" Height="25" Width="74" Background="#FFEBBC38" Foreground="#FF101010" Click="btnSearch_Click"/>
         <ComboBox x:Name="cbAge" HorizontalAlignment="Left" Margin="63,74,0,0" VerticalAlignment="Top" Width="52" Height="24" BorderBrush="White" SelectionChanged="cbAge_SelectionChanged"/>
         <Label Content="Age" HorizontalAlignment="Left" Margin="13,72,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Image HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="78" Source="/Resource-Logo.png" Margin="705,4,0,0" Opacity="0.3" RenderTransformOrigin="0.251,0.488"/>
