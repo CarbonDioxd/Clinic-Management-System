@@ -6,6 +6,39 @@
         xmlns:local="clr-namespace:Clinic_Management_System"
         mc:Ignorable="d"
         Title="ClinicTimeOut" Height="487" Width="752" SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+           x:Name="Bd" BorderBrush="Gray"
+           BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" Background="#FF582723" BorderThickness="1" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid Background="#FFEBBC38">
         <Rectangle RadiusX="5" RadiusY="5" HorizontalAlignment="Left" Height="388" Width="697" VerticalAlignment="Top" Fill="White" Opacity="0.8" Margin="26,61,0,0"/>
         <Image HorizontalAlignment="Left" Height="371" VerticalAlignment="Top" Width="380" Source="/Resource-Logo.png" Margin="26,79,0,0" Opacity="0.09" RenderTransformOrigin="0.251,0.488"/>
@@ -19,19 +52,19 @@
         <Label Content="Administered Medicine(s)" HorizontalAlignment="Left" Margin="45,197,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="14" FontWeight="Bold"/>
         <ComboBox x:Name="cbMeds" HorizontalAlignment="Left" Margin="45,250,0,0" VerticalAlignment="Top" Width="223" Height="29"/>
         <Label Content="Medicine" HorizontalAlignment="Left" Margin="45,226,0,0" VerticalAlignment="Top" Foreground="Black"/>
-        <TextBox x:Name="qtyMedTB" HorizontalAlignment="Left" Margin="273,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="114" Height="29"/>
+        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="qtyMedTB" HorizontalAlignment="Left" Margin="273,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="114" Height="29"/>
         <Label Content="Quantity Given" HorizontalAlignment="Left" Margin="273,226,0,0" VerticalAlignment="Top" Foreground="Black"/>
-        <Button x:Name="btnAddMed" Content="Add" HorizontalAlignment="Left" Margin="321,284,0,0" VerticalAlignment="Top" Height="29" Width="66" Foreground="White" Background="#FF582723" Click="btnAddMed_Click"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnAddMed" Content="Add" HorizontalAlignment="Left" Margin="321,284,0,0" VerticalAlignment="Top" Height="29" Width="66" Foreground="White" Background="#FF582723" Click="btnAddMed_Click"/>
         <Label Content="Given Medical Supply(s)" HorizontalAlignment="Left" Margin="45,315,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="14" FontWeight="Bold"/>
         <ComboBox x:Name="cbSupplies" HorizontalAlignment="Left" Margin="45,368,0,0" VerticalAlignment="Top" Width="223" Height="29"/>
         <Label Content="Medical Supply" HorizontalAlignment="Left" Margin="45,344,0,0" VerticalAlignment="Top" Foreground="Black"/>
-        <TextBox x:Name="qtySuppTB" HorizontalAlignment="Left" Margin="273,368,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="114" Height="29"/>
+        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="qtySuppTB" HorizontalAlignment="Left" Margin="273,368,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="114" Height="29"/>
         <Label Content="Quantity Given" HorizontalAlignment="Left" Margin="273,344,0,0" VerticalAlignment="Top" Foreground="Black"/>
-        <Button x:Name="btnAddSupply" Content="Add" HorizontalAlignment="Left" Margin="321,402,0,0" VerticalAlignment="Top" Height="29" Width="66" Foreground="White" Background="#FF582723" Click="btnAddSupply_Click"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnAddSupply" Content="Add" HorizontalAlignment="Left" Margin="321,402,0,0" VerticalAlignment="Top" Height="29" Width="66" Foreground="White" Background="#FF582723" Click="btnAddSupply_Click"/>
         <Label Content="Observation / Notes" HorizontalAlignment="Left" Margin="426,87,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="14" FontWeight="Bold"/>
         <TextBox x:Name="notesTB" HorizontalAlignment="Left" Margin="426,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Height="244"/>
-        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="623,24,0,0" VerticalAlignment="Top" Height="29" Width="100" Foreground="White" Background="#FF582723" Click="btnBack_Click"/>
-        <Button x:Name="btnTimeOut" Content="Time Out" HorizontalAlignment="Left" Margin="426,394,0,0" VerticalAlignment="Top" Height="37" Width="260" Foreground="White" Background="#FF582723" FontWeight="Bold" Click="btnTimeOut_Click"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="623,24,0,0" VerticalAlignment="Top" Height="29" Width="100" Foreground="White" Background="#FF582723" Click="btnBack_Click"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnTimeOut" Content="Time Out" HorizontalAlignment="Left" Margin="426,394,0,0" VerticalAlignment="Top" Height="37" Width="260" Foreground="White" Background="#FF582723" FontWeight="Bold" Click="btnTimeOut_Click"/>
         <Rectangle HorizontalAlignment="Left" Height="9" Margin="742,462,0,0" Stroke="#FFEBBC38" VerticalAlignment="Top" Width="10"/>
 
     </Grid>
