@@ -52,7 +52,7 @@
         <Label Content="CLINIC INVENTORY" HorizontalAlignment="Center" Margin="0,207,0,0" VerticalAlignment="Top" FontSize="25" FontWeight="Bold" Foreground="#FF252525"/>
         <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnSuppliesOverview" Content="Supplies Overview" HorizontalAlignment="Center" Margin="0,349,0,0" VerticalAlignment="Top" Height="72" Width="354" FontSize="20" Background="#FF720000" Foreground="White" Click="btnSuppliesOverview_Click" IsEnabled="False" />
         <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnClinicVisits" Content="Clinic Visits" HorizontalAlignment="Center" Margin="0,433,0,0" VerticalAlignment="Top" Height="72" Width="354" FontSize="20" Background="#FF720000" Foreground="White" Click="btnClinicVisits_Click" IsEnabled="True" />
-        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnUserLogs" Content="User Logs" HorizontalAlignment="Center" Margin="0,514,0,0" VerticalAlignment="Top" Height="72" Width="354" FontSize="20" Background="#FF720000" Foreground="White" Click="btnUserLogs_Click" IsEnabled="False"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnUserLogs" Content="User Logs" HorizontalAlignment="Center" Margin="0,514,0,0" VerticalAlignment="Top" Height="72" Width="354" FontSize="20" Background="#FF720000" Foreground="White" Click="btnUserLogs_Click"/>
         <Rectangle HorizontalAlignment="Left" Height="10" Margin="640,674,0,0" Stroke="#FF582723" VerticalAlignment="Top" Width="10"/>
 
     </Grid>

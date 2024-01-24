@@ -60,7 +60,7 @@ namespace Clinic_Management_System
 
         private void btnUserLogs_Click(object sender, RoutedEventArgs e)
         {
-            UserlogsWindow userlogsWindow = new UserlogsWindow();
+            UserLogs userlogsWindow = new UserLogs();
             userlogsWindow.Show();
             this.Close();
         }
