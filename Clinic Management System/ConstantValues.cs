@@ -18,6 +18,7 @@ namespace Clinic_Management_System
         public static int PID = 0;
         public static int AID = 0;
         public static string type = "";
+        public static string sName = "";
 
     }
 }

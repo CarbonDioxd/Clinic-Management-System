@@ -91,7 +91,7 @@ namespace Clinic_Management_System
 
             for (int x = 0; x < EmergencyResults.Count; x++)
             {
-                if (EmergencyResults[x].PatientID == PID)
+                if (EmergencyResults[x].PatientID == ConstantValues.PID)
                 {
                     txtEAddress.Text = EmergencyResults[x].EmgyContactAddress;
                     txtRelationship.Text = EmergencyResults[x].EmgyRelationship;

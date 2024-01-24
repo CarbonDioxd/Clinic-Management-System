@@ -19,9 +19,29 @@ namespace Clinic_Management_System
     /// </summary>
     public partial class UserlogsWindow : Window
     {
+        ClinicDatabaseDataContext db = ConstantValues.DBConnectionString;
+
         public UserlogsWindow()
         {
             InitializeComponent();
+            Fill();
+        }
+        private void Fill()
+        { 
+            foreach(tblSupply s in db.tblSupplies)
+            {
+                if (s.SupplyName.ToLower() == ConstantValues.sName.ToLower())
+                {
+                    lbl_ID.Content = s.SupplyID;
+                    txtName.Text = s.SupplyName;
+                    txtSupplier.Text = s.SupplierName;
+                    txtPrice.Text = s.SupplyPrice.ToString();
+                    txtQuantity.Text = s.SupplyQty.ToString();
+                    txtStatus.Text = s.SupplyStatus.ToString();
+                    txtExpDate.Text = s.SupplyExpDate.ToString();
+                    txtLastUpd.Text = s.SupplyLastUpdated.ToString();
+                }
+            }
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
