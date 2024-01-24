@@ -40,9 +40,16 @@ namespace Clinic_Management_System
 
         private void timeinbtn_Click(object sender, RoutedEventArgs e)
         {
-            clinicDB.uspAddClinicVisitInfo(pID, ConstantValues.UID);
-            clinicDB.uspInsertLogs(ConstantValues.UID, "A patient has been checked in");
-            MessageBox.Show("Successfully checked in");
+            if(txtPatientName.Text == "")
+            {
+                MessageBox.Show("Make sure you have selected a patient.");
+            }
+            else
+            {
+                clinicDB.uspAddClinicVisitInfo(pID, ConstantValues.UID);
+                clinicDB.uspInsertLogs(ConstantValues.UID, "A patient has been checked in");
+                MessageBox.Show("Successfully checked in");
+            }
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)

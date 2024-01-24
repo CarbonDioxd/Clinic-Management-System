@@ -188,22 +188,30 @@ namespace Clinic_Management_System
 
         private void btnTimeOut_Click(object sender, RoutedEventArgs e)
         {
-            string patient = (string)cbPName.SelectedItem;
-            int pID = (int)clinicDB.udfGetPatientID(patient);
-            DateTime timein = timeins1.ElementAt(cbTimeIn.SelectedIndex);
+            if(cbPName.Text == "" || cbTimeIn.Text == "")
+            {
+                MessageBox.Show("Make sure you have selected a patient and a time in.");
+            }
+            else
+            {
+                string patient = (string)cbPName.SelectedItem;
+                int pID = (int)clinicDB.udfGetPatientID(patient);
+                DateTime timein = timeins1.ElementAt(cbTimeIn.SelectedIndex);
 
-            int vID = (int)clinicDB.udfGetVisitID(pID, timein);
+                int vID = (int)clinicDB.udfGetVisitID(pID, timein);
 
-            string notes = notesTB.Text;
+                string notes = notesTB.Text;
 
-            clinicDB.uspPatientTimeOut(vID, notes);
-            clinicDB.uspInsertLogs(ConstantValues.UID, "Patient has checked out");
+                clinicDB.uspPatientTimeOut(vID, notes);
+                clinicDB.uspInsertLogs(ConstantValues.UID, "Patient has checked out");
 
-            MessageBox.Show("Checked out Patient " + patient);
+                MessageBox.Show("Checked out Patient " + patient);
 
-            cbPName.Text = "";
-            cbTimeIn.Text = "";
-            notesTB.Text = "";
+                cbPName.Text = "";
+                cbTimeIn.Text = "";
+                notesTB.Text = "";
+            }
+            
         }
 
         private void qtyMedTB_TextChanged(object sender, TextChangedEventArgs e)

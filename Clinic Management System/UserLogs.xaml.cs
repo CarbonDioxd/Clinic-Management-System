@@ -67,5 +67,12 @@ namespace Clinic_Management_System
                 }
             }
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.BackFunction(ConstantValues.type);
+            this.Close();
+        }
     }
 }

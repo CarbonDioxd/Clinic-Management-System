@@ -47,12 +47,12 @@ namespace Clinic_Management_System
             this.Close();
         }
 
-        private void btnRegisterPatient_Click(object sender, RoutedEventArgs e)
-        {
-            EditPatientWindow editPatientWindow = new EditPatientWindow();
-            editPatientWindow.Show();
-            this.Close();
-        }
+        //private void btnRegisterPatient_Click(object sender, RoutedEventArgs e)
+        //{
+        //    EditPatientWindow editPatientWindow = new EditPatientWindow();
+        //    editPatientWindow.Show();
+        //    this.Close();
+        //}
 
         private void Fill()
         {

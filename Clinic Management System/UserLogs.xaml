@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clinic_Management_System"
         mc:Ignorable="d"
-        Title="UserLogs" Height="424" Width="743">
+        Title="UserLogs" Height="424" Width="743" SizeToContent="WidthAndHeight">
     <Window.Resources>
         <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
             <Border Background="{TemplateBinding Background}" 
@@ -42,7 +42,7 @@
     <Grid Background="#FF582723">
         <Rectangle RadiusX="5" RadiusY="5" HorizontalAlignment="Center" Height="323" Width="700" VerticalAlignment="Top" Fill="White" Opacity="0.8" Margin="0,61,0,0"/>
         <Image HorizontalAlignment="Left" Height="278" VerticalAlignment="Top" Width="282" Source="/Resource-Logo.png" Margin="233,100,0,0" Opacity="0.1" RenderTransformOrigin="0.251,0.488"/>
-        <Button  Style="{StaticResource RoundedButtonStyle}" x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="640,27,0,0" VerticalAlignment="Top" Width="82" Height="25" Background="#FFEBBC38" FontWeight="Normal"/>
+        <Button  Style="{StaticResource RoundedButtonStyle}" x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="640,27,0,0" VerticalAlignment="Top" Width="82" Height="25" Background="#FFEBBC38" FontWeight="Normal" Click="btnBack_Click"/>
         <Label Content="User Logs" HorizontalAlignment="Left" Margin="24,12,0,0" VerticalAlignment="Top" FontSize="25" Foreground="White" FontWeight="Bold"/>
         <ListBox x:Name="lbxAllLog" Margin="47,115,0,0" Height="248" VerticalAlignment="Top" HorizontalAlignment="Left" Width="278" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
         <Label Content="All User Logs" HorizontalAlignment="Left" Margin="47,79,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="16"/>

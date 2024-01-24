@@ -63,7 +63,7 @@ namespace Clinic_Management_System
     #endregion
 		
 		public ClinicDatabaseDataContext() : 
-				base(global::Clinic_Management_System.Properties.Settings.Default.ClinicManagementSystem_Group3ConnectionString2, mappingSource)
+				base(global::Clinic_Management_System.Properties.Settings.Default.ClinicManagementSystem_Group3ConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
