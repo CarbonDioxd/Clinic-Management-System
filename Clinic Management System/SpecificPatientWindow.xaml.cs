@@ -101,14 +101,17 @@ namespace Clinic_Management_System
                 }
             }
 
-            for (int x = 0; x < AdviserResults.Count; x++)
+            foreach (tblStudentAdviser a in db_con.tblStudentAdvisers)
             {
-                if (AdviserResults[x].AdviserID == ConstantValues.AID)
+                foreach (tblPatient p in db_con.tblPatients)
                 {
-                    txtDept.Text = AdviserResults[x].AdviserDept;
-                    txtAdvName.Text = AdviserResults[x].AdviserName;
-                    AdvContactNum.Text = AdviserResults[x].AdviserNum;
-                    AdvEmailAddress.Text = AdviserResults[x].AdviserEmail;
+                    if (ConstantValues.PID == p.PatientID && p.AdviserID == a.AdviserID)
+                    {
+                        txtDept.Text = a.AdviserDept;
+                        txtAdvName.Text = a.AdviserName;
+                        AdvContactNum.Text = a.AdviserNum;
+                        AdvEmailAddress.Text = a.AdviserEmail;
+                    }
                 }
             }
         }
