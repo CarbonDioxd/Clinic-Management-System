@@ -27,47 +27,47 @@ namespace Clinic_Management_System
         public SuppliesOverviewWindow()
         {
             InitializeComponent();
-            Fill();
+            //Fill();
             if (ConstantValues.type == "Admin")
             {
                 btnAddSupply.IsEnabled = false;
             }
         }
 
-        private void Fill()
-        {
-            List<GetAllSuppliesResult> getAllSuppliesResults = db_con.GetAllSupplies().ToList();
-            cbExpDate.Items.Add("NONE");
-            foreach (var result in getAllSuppliesResults)
-            {
-                lbSupplyResults.Items.Add(result.SupplyName);
-                if (!cbBrandName.Items.Contains(result.SupplierName))
-                {
-                    cbBrandName.Items.Add(result.SupplyName);
-                }
-                if (!cbExpDate.Items.Contains(result.SupplyExpDate))
-                {
-                    cbExpDate.Items.Add(result.SupplyExpDate);
-                }
-                if (!cbSupplier.Items.Contains(result.SupplyStatus))
-                {
-                    cbSupplier.Items.Add(result.SupplyStatus);
-                }
-            }
-            if (cbSupplier.Items.Contains("Out Of Stock"))
-                cbSupplier.Items.Add("In Stock");
-            else
-                cbSupplier.Items.Add("Out Of Stock");
-        }
-        private void FilterFill()
-        {
-            lbSupplyResults.Items.Clear();
-            List<GetSpecificSupplyResult> getSpecificSupplyResults = db_con.GetSpecificSupply(d).ToList();
-            foreach (var result in getSpecificSupplyResults)
-            {
-                lbSupplyResults.Items.Add(result.SupplyName);
-            }
-        }
+        //private void Fill()
+        //{
+        //    List<GetAllSuppliesResult> getAllSuppliesResults = db_con.GetAllSupplies().ToList();
+        //    cbExpDate.Items.Add("NONE");
+        //    foreach (var result in getAllSuppliesResults)
+        //    {
+        //        lbSupplyResults.Items.Add(result.SupplyName);
+        //        if (!cbBrandName.Items.Contains(result.SupplierName))
+        //        {
+        //            cbBrandName.Items.Add(result.SupplyName);
+        //        }
+        //        if (!cbExpDate.Items.Contains(result.SupplyExpDate))
+        //        {
+        //            cbExpDate.Items.Add(result.SupplyExpDate);
+        //        }
+        //        if (!cbSupplier.Items.Contains(result.SupplyStatus))
+        //        {
+        //            cbSupplier.Items.Add(result.SupplyStatus);
+        //        }
+        //    }
+        //    if (cbSupplier.Items.Contains("Out Of Stock"))
+        //        cbSupplier.Items.Add("In Stock");
+        //    else
+        //        cbSupplier.Items.Add("Out Of Stock");
+        //}
+        //private void FilterFill()
+        //{
+        //    lbSupplyResults.Items.Clear();
+        //    List<GetSpecificSupplyResult> getSpecificSupplyResults = db_con.GetSpecificSupply(d).ToList();
+        //    foreach (var result in getSpecificSupplyResults)
+        //    {
+        //        lbSupplyResults.Items.Add(result.SupplyName);
+        //    }
+        //}
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
@@ -76,38 +76,38 @@ namespace Clinic_Management_System
             this.Close();
         }
 
-        private void cbExpDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (cbExpDate.SelectedIndex != -1)
-                a = cbExpDate.SelectedItem.ToString();
-            else if (cbExpDate.SelectedIndex == 0)
-                a = null;
-            FilterFill();
-        }
+        //private void cbExpDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (cbExpDate.SelectedIndex != -1)
+        //        a = cbExpDate.SelectedItem.ToString();
+        //    else if (cbExpDate.SelectedIndex == 0)
+        //        a = null;
+        //    FilterFill();
+        //}
 
-        private void cbSupplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (cbSupplier.SelectedIndex != -1)
-                a = cbSupplier.SelectedItem.ToString();
-            FilterFill();
-        }
+        //private void cbSupplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (cbSupplier.SelectedIndex != -1)
+        //        a = cbSupplier.SelectedItem.ToString();
+        //    FilterFill();
+        //}
 
-        private void cbBrandName_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (cbBrandName.SelectedIndex != -1)
-                c = cbBrandName.SelectedItem.ToString();
-            FilterFill();
-        }
+        //private void cbBrandName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (cbBrandName.SelectedIndex != -1)
+        //        c = cbBrandName.SelectedItem.ToString();
+        //    FilterFill();
+        //}
 
-        private void txtSupplyName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            d = txtSupplyName.Text;
-            cbBrandName.SelectedIndex = -1;
-            cbExpDate.SelectedIndex = -1;
-            cbSupplier.SelectedIndex = -1;
-            FilterFill();
-            if (d == "")
-                Fill();
-        }
+        //private void txtSupplyName_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    d = txtSupplyName.Text;
+        //    cbBrandName.SelectedIndex = -1;
+        //    cbExpDate.SelectedIndex = -1;
+        //    cbSupplier.SelectedIndex = -1;
+        //    FilterFill();
+        //    if (d == "")
+        //        Fill();
+        //}
     }
 }

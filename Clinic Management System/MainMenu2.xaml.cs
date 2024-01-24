@@ -53,10 +53,9 @@ namespace Clinic_Management_System
 
         private void btnClinicVisits_Click(object sender, RoutedEventArgs e)
         {
-
-            //ClinicVisits clinicVisits = new ClinicVisits();
-            //clinicVisits.Show();
-            //this.Close();
+            ClinicHistory clinicVisits = new ClinicHistory();
+            clinicVisits.Show();
+            this.Close();
         }
 
         private void btnUserLogs_Click(object sender, RoutedEventArgs e)

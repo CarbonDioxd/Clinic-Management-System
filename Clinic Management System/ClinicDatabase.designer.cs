@@ -63,7 +63,7 @@ namespace Clinic_Management_System
     #endregion
 		
 		public ClinicDatabaseDataContext() : 
-				base(global::Clinic_Management_System.Properties.Settings.Default.ClinicManagementSystem_Group3ConnectionString1, mappingSource)
+				base(global::Clinic_Management_System.Properties.Settings.Default.ClinicManagementSystem_Group3ConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}
@@ -200,6 +200,13 @@ namespace Clinic_Management_System
 			return ((int)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspAddPatient")]
+		public int uspAddPatient([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PatientFullName", DbType="NVarChar(100)")] string patientFullName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Age", DbType="Int")] System.Nullable<int> age, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Gender", DbType="NVarChar(50)")] string gender, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PatientType", DbType="NVarChar(50)")] string patientType, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PatientDesc", DbType="NVarChar(50)")] string patientDesc, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ContactNumber", DbType="NChar(11)")] string contactNumber, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EmailAddress", DbType="NVarChar(100)")] string emailAddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(MAX)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AID", DbType="Int")] System.Nullable<int> aID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), patientFullName, age, gender, patientType, patientDesc, contactNumber, emailAddress, address, aID);
+			return ((int)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspAddSupply")]
 		public int uspAddSupply([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(100)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ExpirationDate", DbType="Date")] System.Nullable<System.DateTime> expirationDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Supplier", DbType="NVarChar(100)")] string supplier, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Quantity", DbType="Int")] System.Nullable<int> quantity, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="NVarChar(50)")] string status, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Price", DbType="Money")] System.Nullable<decimal> price)
 		{
@@ -228,6 +235,20 @@ namespace Clinic_Management_System
 			return ((ISingleResult<uspGrabPIDfromPatientNameResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspInsertGivenMeds")]
+		public int uspInsertGivenMeds([global::System.Data.Linq.Mapping.ParameterAttribute(Name="VID", DbType="Int")] System.Nullable<int> vID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MID", DbType="Int")] System.Nullable<int> mID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), vID, mID, qty);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspInsertGivenSupplies")]
+		public int uspInsertGivenSupplies([global::System.Data.Linq.Mapping.ParameterAttribute(Name="VID", DbType="Int")] System.Nullable<int> vID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SID", DbType="Int")] System.Nullable<int> sID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), vID, sID, qty);
+			return ((int)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspInsertLogs")]
 		public int uspInsertLogs([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UID", DbType="Int")] System.Nullable<int> uID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LogDesc", DbType="NVarChar(MAX)")] string logDesc)
 		{
@@ -254,6 +275,13 @@ namespace Clinic_Management_System
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email, pW);
 			return ((ISingleResult<uspLoginResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspPatientTimeOut")]
+		public int uspPatientTimeOut([global::System.Data.Linq.Mapping.ParameterAttribute(Name="VID", DbType="Int")] System.Nullable<int> vID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Notes", DbType="NVarChar(MAX)")] string notes)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), vID, notes);
+			return ((int)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectAllEmergencyContact")]
@@ -298,11 +326,32 @@ namespace Clinic_Management_System
 			return ((ISingleResult<uspSelectAllStudentAdviserResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectAllSupplies")]
+		public ISingleResult<uspSelectAllSuppliesResult> uspSelectAllSupplies()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<uspSelectAllSuppliesResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectAllUser")]
 		public ISingleResult<uspSelectAllUserResult> uspSelectAllUser()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<uspSelectAllUserResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectAvailMeds")]
+		public ISingleResult<uspSelectAvailMedsResult> uspSelectAvailMeds()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<uspSelectAvailMedsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectAvailSupplies")]
+		public ISingleResult<uspSelectAvailSuppliesResult> uspSelectAvailSupplies()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<uspSelectAvailSuppliesResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectClinicVisits")]
@@ -340,6 +389,13 @@ namespace Clinic_Management_System
 			return ((ISingleResult<uspSelectMedicineByManufacturerResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectNursesMedPro")]
+		public ISingleResult<uspSelectNursesMedProResult> uspSelectNursesMedPro()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<uspSelectNursesMedProResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectPatientByAge")]
 		public ISingleResult<uspSelectPatientByAgeResult> uspSelectPatientByAge([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Age", DbType="Int")] System.Nullable<int> age)
 		{
@@ -366,6 +422,13 @@ namespace Clinic_Management_System
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), patientType);
 			return ((ISingleResult<uspSelectPatientByTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectPatientTimeIn")]
+		public ISingleResult<uspSelectPatientTimeInResult> uspSelectPatientTimeIn([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PatientName", DbType="NVarChar(100)")] string patientName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), patientName);
+			return ((ISingleResult<uspSelectPatientTimeInResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectUserLogs")]
@@ -403,13 +466,6 @@ namespace Clinic_Management_System
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspAddPatient")]
-		public int uspAddPatient([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PatientFullName", DbType="NVarChar(100)")] string patientFullName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Age", DbType="Int")] System.Nullable<int> age, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Gender", DbType="NVarChar(50)")] string gender, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PatientType", DbType="NVarChar(50)")] string patientType, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PatientDesc", DbType="NVarChar(50)")] string patientDesc, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ContactNumber", DbType="NChar(11)")] string contactNumber, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EmailAddress", DbType="NVarChar(100)")] string emailAddress, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="NVarChar(MAX)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="AID", DbType="Int")] System.Nullable<int> aID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), patientFullName, age, gender, patientType, patientDesc, contactNumber, emailAddress, address, aID);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.udfCountPatients", IsComposable=true)]
 		public System.Nullable<int> udfCountPatients()
 		{
@@ -434,6 +490,12 @@ namespace Clinic_Management_System
 			return ((System.Nullable<int>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name).ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.udfGetSupplyID", IsComposable=true)]
+		public System.Nullable<int> udfGetSupplyID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(100)")] string name)
+		{
+			return ((System.Nullable<int>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name).ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.udfGetUserID", IsComposable=true)]
 		public System.Nullable<int> udfGetUserID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(100)")] string name)
 		{
@@ -444,82 +506,6 @@ namespace Clinic_Management_System
 		public System.Nullable<int> udfGetVisitID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PID", DbType="Int")] System.Nullable<int> pID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimeIn", DbType="DateTime")] System.Nullable<System.DateTime> timeIn)
 		{
 			return ((System.Nullable<int>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), pID, timeIn).ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectPatientTimeIn")]
-		public ISingleResult<uspSelectPatientTimeInResult> uspSelectPatientTimeIn([global::System.Data.Linq.Mapping.ParameterAttribute(Name="PatientName", DbType="NVarChar(100)")] string patientName)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), patientName);
-			return ((ISingleResult<uspSelectPatientTimeInResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectNursesMedPro")]
-		public ISingleResult<uspSelectNursesMedProResult> uspSelectNursesMedPro()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<uspSelectNursesMedProResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspInsertGivenMeds")]
-		public int uspInsertGivenMeds([global::System.Data.Linq.Mapping.ParameterAttribute(Name="VID", DbType="Int")] System.Nullable<int> vID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MID", DbType="Int")] System.Nullable<int> mID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), vID, mID, qty);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspInsertGivenSupplies")]
-		public int uspInsertGivenSupplies([global::System.Data.Linq.Mapping.ParameterAttribute(Name="VID", DbType="Int")] System.Nullable<int> vID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SID", DbType="Int")] System.Nullable<int> sID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Qty", DbType="Int")] System.Nullable<int> qty)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), vID, sID, qty);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspPatientTimeOut")]
-		public int uspPatientTimeOut([global::System.Data.Linq.Mapping.ParameterAttribute(Name="VID", DbType="Int")] System.Nullable<int> vID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Notes", DbType="NVarChar(MAX)")] string notes)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), vID, notes);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectAllSupplies")]
-		public ISingleResult<uspSelectAllSuppliesResult> uspSelectAllSupplies()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<uspSelectAllSuppliesResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectAvailMeds")]
-		public ISingleResult<uspSelectAvailMedsResult> uspSelectAvailMeds()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<uspSelectAvailMedsResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.uspSelectAvailSupplies")]
-		public ISingleResult<uspSelectAvailSuppliesResult> uspSelectAvailSupplies()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<uspSelectAvailSuppliesResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.udfGetSupplyID", IsComposable=true)]
-		public System.Nullable<int> udfGetSupplyID([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(100)")] string name)
-		{
-			return ((System.Nullable<int>)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name).ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetAllSupplies")]
-		public ISingleResult<GetAllSuppliesResult> GetAllSupplies()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<GetAllSuppliesResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetSpecificSupply")]
-		public ISingleResult<GetSpecificSupplyResult> GetSpecificSupply([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string search)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), search);
-			return ((ISingleResult<GetSpecificSupplyResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3990,6 +3976,158 @@ namespace Clinic_Management_System
 		}
 	}
 	
+	public partial class uspSelectAllSuppliesResult
+	{
+		
+		private int _SupplyID;
+		
+		private string _SupplyName;
+		
+		private System.Nullable<System.DateTime> _SupplyExpDate;
+		
+		private string _SupplierName;
+		
+		private int _SupplyQty;
+		
+		private string _SupplyStatus;
+		
+		private decimal _SupplyPrice;
+		
+		private System.DateTime _SupplyLastUpdated;
+		
+		public uspSelectAllSuppliesResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyID", DbType="Int NOT NULL")]
+		public int SupplyID
+		{
+			get
+			{
+				return this._SupplyID;
+			}
+			set
+			{
+				if ((this._SupplyID != value))
+				{
+					this._SupplyID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string SupplyName
+		{
+			get
+			{
+				return this._SupplyName;
+			}
+			set
+			{
+				if ((this._SupplyName != value))
+				{
+					this._SupplyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyExpDate", DbType="Date")]
+		public System.Nullable<System.DateTime> SupplyExpDate
+		{
+			get
+			{
+				return this._SupplyExpDate;
+			}
+			set
+			{
+				if ((this._SupplyExpDate != value))
+				{
+					this._SupplyExpDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplierName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string SupplierName
+		{
+			get
+			{
+				return this._SupplierName;
+			}
+			set
+			{
+				if ((this._SupplierName != value))
+				{
+					this._SupplierName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyQty", DbType="Int NOT NULL")]
+		public int SupplyQty
+		{
+			get
+			{
+				return this._SupplyQty;
+			}
+			set
+			{
+				if ((this._SupplyQty != value))
+				{
+					this._SupplyQty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyStatus", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string SupplyStatus
+		{
+			get
+			{
+				return this._SupplyStatus;
+			}
+			set
+			{
+				if ((this._SupplyStatus != value))
+				{
+					this._SupplyStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyPrice", DbType="Money NOT NULL")]
+		public decimal SupplyPrice
+		{
+			get
+			{
+				return this._SupplyPrice;
+			}
+			set
+			{
+				if ((this._SupplyPrice != value))
+				{
+					this._SupplyPrice = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyLastUpdated", DbType="DateTime NOT NULL")]
+		public System.DateTime SupplyLastUpdated
+		{
+			get
+			{
+				return this._SupplyLastUpdated;
+			}
+			set
+			{
+				if ((this._SupplyLastUpdated != value))
+				{
+					this._SupplyLastUpdated = value;
+				}
+			}
+		}
+	}
+	
 	public partial class uspSelectAllUserResult
 	{
 		
@@ -4119,6 +4257,310 @@ namespace Clinic_Management_System
 				if ((this._UserType != value))
 				{
 					this._UserType = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspSelectAvailMedsResult
+	{
+		
+		private int _MedicineID;
+		
+		private string _MedicineName;
+		
+		private string _MedicineType;
+		
+		private System.DateTime _MedExpDate;
+		
+		private string _MedManufacturer;
+		
+		private int _MedQty;
+		
+		private string _MedStatus;
+		
+		private System.DateTime _MedLastUpdated;
+		
+		public uspSelectAvailMedsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedicineID", DbType="Int NOT NULL")]
+		public int MedicineID
+		{
+			get
+			{
+				return this._MedicineID;
+			}
+			set
+			{
+				if ((this._MedicineID != value))
+				{
+					this._MedicineID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedicineName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string MedicineName
+		{
+			get
+			{
+				return this._MedicineName;
+			}
+			set
+			{
+				if ((this._MedicineName != value))
+				{
+					this._MedicineName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedicineType", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string MedicineType
+		{
+			get
+			{
+				return this._MedicineType;
+			}
+			set
+			{
+				if ((this._MedicineType != value))
+				{
+					this._MedicineType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedExpDate", DbType="Date NOT NULL")]
+		public System.DateTime MedExpDate
+		{
+			get
+			{
+				return this._MedExpDate;
+			}
+			set
+			{
+				if ((this._MedExpDate != value))
+				{
+					this._MedExpDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedManufacturer", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string MedManufacturer
+		{
+			get
+			{
+				return this._MedManufacturer;
+			}
+			set
+			{
+				if ((this._MedManufacturer != value))
+				{
+					this._MedManufacturer = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedQty", DbType="Int NOT NULL")]
+		public int MedQty
+		{
+			get
+			{
+				return this._MedQty;
+			}
+			set
+			{
+				if ((this._MedQty != value))
+				{
+					this._MedQty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedStatus", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string MedStatus
+		{
+			get
+			{
+				return this._MedStatus;
+			}
+			set
+			{
+				if ((this._MedStatus != value))
+				{
+					this._MedStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedLastUpdated", DbType="DateTime NOT NULL")]
+		public System.DateTime MedLastUpdated
+		{
+			get
+			{
+				return this._MedLastUpdated;
+			}
+			set
+			{
+				if ((this._MedLastUpdated != value))
+				{
+					this._MedLastUpdated = value;
+				}
+			}
+		}
+	}
+	
+	public partial class uspSelectAvailSuppliesResult
+	{
+		
+		private int _SupplyID;
+		
+		private string _SupplyName;
+		
+		private System.Nullable<System.DateTime> _SupplyExpDate;
+		
+		private string _SupplierName;
+		
+		private int _SupplyQty;
+		
+		private string _SupplyStatus;
+		
+		private decimal _SupplyPrice;
+		
+		private System.DateTime _SupplyLastUpdated;
+		
+		public uspSelectAvailSuppliesResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyID", DbType="Int NOT NULL")]
+		public int SupplyID
+		{
+			get
+			{
+				return this._SupplyID;
+			}
+			set
+			{
+				if ((this._SupplyID != value))
+				{
+					this._SupplyID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string SupplyName
+		{
+			get
+			{
+				return this._SupplyName;
+			}
+			set
+			{
+				if ((this._SupplyName != value))
+				{
+					this._SupplyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyExpDate", DbType="Date")]
+		public System.Nullable<System.DateTime> SupplyExpDate
+		{
+			get
+			{
+				return this._SupplyExpDate;
+			}
+			set
+			{
+				if ((this._SupplyExpDate != value))
+				{
+					this._SupplyExpDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplierName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string SupplierName
+		{
+			get
+			{
+				return this._SupplierName;
+			}
+			set
+			{
+				if ((this._SupplierName != value))
+				{
+					this._SupplierName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyQty", DbType="Int NOT NULL")]
+		public int SupplyQty
+		{
+			get
+			{
+				return this._SupplyQty;
+			}
+			set
+			{
+				if ((this._SupplyQty != value))
+				{
+					this._SupplyQty = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyStatus", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string SupplyStatus
+		{
+			get
+			{
+				return this._SupplyStatus;
+			}
+			set
+			{
+				if ((this._SupplyStatus != value))
+				{
+					this._SupplyStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyPrice", DbType="Money NOT NULL")]
+		public decimal SupplyPrice
+		{
+			get
+			{
+				return this._SupplyPrice;
+			}
+			set
+			{
+				if ((this._SupplyPrice != value))
+				{
+					this._SupplyPrice = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyLastUpdated", DbType="DateTime NOT NULL")]
+		public System.DateTime SupplyLastUpdated
+		{
+			get
+			{
+				return this._SupplyLastUpdated;
+			}
+			set
+			{
+				if ((this._SupplyLastUpdated != value))
+				{
+					this._SupplyLastUpdated = value;
 				}
 			}
 		}
@@ -4902,6 +5344,140 @@ namespace Clinic_Management_System
 		}
 	}
 	
+	public partial class uspSelectNursesMedProResult
+	{
+		
+		private int _UserID;
+		
+		private string _UserFullName;
+		
+		private string _UserName;
+		
+		private string _UserPassword;
+		
+		private string _UserEmail;
+		
+		private string _UserContact;
+		
+		private string _UserType;
+		
+		public uspSelectNursesMedProResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this._UserID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserFullName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string UserFullName
+		{
+			get
+			{
+				return this._UserFullName;
+			}
+			set
+			{
+				if ((this._UserFullName != value))
+				{
+					this._UserFullName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this._UserName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserPassword", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserPassword
+		{
+			get
+			{
+				return this._UserPassword;
+			}
+			set
+			{
+				if ((this._UserPassword != value))
+				{
+					this._UserPassword = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserEmail", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string UserEmail
+		{
+			get
+			{
+				return this._UserEmail;
+			}
+			set
+			{
+				if ((this._UserEmail != value))
+				{
+					this._UserEmail = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserContact", DbType="NChar(11) NOT NULL", CanBeNull=false)]
+		public string UserContact
+		{
+			get
+			{
+				return this._UserContact;
+			}
+			set
+			{
+				if ((this._UserContact != value))
+				{
+					this._UserContact = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserType", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserType
+		{
+			get
+			{
+				return this._UserType;
+			}
+			set
+			{
+				if ((this._UserType != value))
+				{
+					this._UserType = value;
+				}
+			}
+		}
+	}
+	
 	public partial class uspSelectPatientByAgeResult
 	{
 		
@@ -5582,6 +6158,32 @@ namespace Clinic_Management_System
 		}
 	}
 	
+	public partial class uspSelectPatientTimeInResult
+	{
+		
+		private System.DateTime _PatientTimeIn;
+		
+		public uspSelectPatientTimeInResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientTimeIn", DbType="DateTime NOT NULL")]
+		public System.DateTime PatientTimeIn
+		{
+			get
+			{
+				return this._PatientTimeIn;
+			}
+			set
+			{
+				if ((this._PatientTimeIn != value))
+				{
+					this._PatientTimeIn = value;
+				}
+			}
+		}
+	}
+	
 	public partial class uspSelectUserLogsResult
 	{
 		
@@ -5657,926 +6259,6 @@ namespace Clinic_Management_System
 				if ((this._LogDate != value))
 				{
 					this._LogDate = value;
-				}
-			}
-		}
-	}
-	
-	public partial class uspSelectPatientTimeInResult
-	{
-		
-		private System.DateTime _PatientTimeIn;
-		
-		public uspSelectPatientTimeInResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientTimeIn", DbType="DateTime NOT NULL")]
-		public System.DateTime PatientTimeIn
-		{
-			get
-			{
-				return this._PatientTimeIn;
-			}
-			set
-			{
-				if ((this._PatientTimeIn != value))
-				{
-					this._PatientTimeIn = value;
-				}
-			}
-		}
-	}
-	
-	public partial class uspSelectNursesMedProResult
-	{
-		
-		private int _UserID;
-		
-		private string _UserFullName;
-		
-		private string _UserName;
-		
-		private string _UserPassword;
-		
-		private string _UserEmail;
-		
-		private string _UserContact;
-		
-		private string _UserType;
-		
-		public uspSelectNursesMedProResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
-		public int UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this._UserID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserFullName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string UserFullName
-		{
-			get
-			{
-				return this._UserFullName;
-			}
-			set
-			{
-				if ((this._UserFullName != value))
-				{
-					this._UserFullName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string UserName
-		{
-			get
-			{
-				return this._UserName;
-			}
-			set
-			{
-				if ((this._UserName != value))
-				{
-					this._UserName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserPassword", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string UserPassword
-		{
-			get
-			{
-				return this._UserPassword;
-			}
-			set
-			{
-				if ((this._UserPassword != value))
-				{
-					this._UserPassword = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserEmail", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string UserEmail
-		{
-			get
-			{
-				return this._UserEmail;
-			}
-			set
-			{
-				if ((this._UserEmail != value))
-				{
-					this._UserEmail = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserContact", DbType="NChar(11) NOT NULL", CanBeNull=false)]
-		public string UserContact
-		{
-			get
-			{
-				return this._UserContact;
-			}
-			set
-			{
-				if ((this._UserContact != value))
-				{
-					this._UserContact = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserType", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string UserType
-		{
-			get
-			{
-				return this._UserType;
-			}
-			set
-			{
-				if ((this._UserType != value))
-				{
-					this._UserType = value;
-				}
-			}
-		}
-	}
-	
-	public partial class uspSelectAllSuppliesResult
-	{
-		
-		private int _SupplyID;
-		
-		private string _SupplyName;
-		
-		private System.Nullable<System.DateTime> _SupplyExpDate;
-		
-		private string _SupplierName;
-		
-		private int _SupplyQty;
-		
-		private string _SupplyStatus;
-		
-		private decimal _SupplyPrice;
-		
-		private System.DateTime _SupplyLastUpdated;
-		
-		public uspSelectAllSuppliesResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyID", DbType="Int NOT NULL")]
-		public int SupplyID
-		{
-			get
-			{
-				return this._SupplyID;
-			}
-			set
-			{
-				if ((this._SupplyID != value))
-				{
-					this._SupplyID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string SupplyName
-		{
-			get
-			{
-				return this._SupplyName;
-			}
-			set
-			{
-				if ((this._SupplyName != value))
-				{
-					this._SupplyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyExpDate", DbType="Date")]
-		public System.Nullable<System.DateTime> SupplyExpDate
-		{
-			get
-			{
-				return this._SupplyExpDate;
-			}
-			set
-			{
-				if ((this._SupplyExpDate != value))
-				{
-					this._SupplyExpDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplierName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string SupplierName
-		{
-			get
-			{
-				return this._SupplierName;
-			}
-			set
-			{
-				if ((this._SupplierName != value))
-				{
-					this._SupplierName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyQty", DbType="Int NOT NULL")]
-		public int SupplyQty
-		{
-			get
-			{
-				return this._SupplyQty;
-			}
-			set
-			{
-				if ((this._SupplyQty != value))
-				{
-					this._SupplyQty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyStatus", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string SupplyStatus
-		{
-			get
-			{
-				return this._SupplyStatus;
-			}
-			set
-			{
-				if ((this._SupplyStatus != value))
-				{
-					this._SupplyStatus = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyPrice", DbType="Money NOT NULL")]
-		public decimal SupplyPrice
-		{
-			get
-			{
-				return this._SupplyPrice;
-			}
-			set
-			{
-				if ((this._SupplyPrice != value))
-				{
-					this._SupplyPrice = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyLastUpdated", DbType="DateTime NOT NULL")]
-		public System.DateTime SupplyLastUpdated
-		{
-			get
-			{
-				return this._SupplyLastUpdated;
-			}
-			set
-			{
-				if ((this._SupplyLastUpdated != value))
-				{
-					this._SupplyLastUpdated = value;
-				}
-			}
-		}
-	}
-	
-	public partial class uspSelectAvailMedsResult
-	{
-		
-		private int _MedicineID;
-		
-		private string _MedicineName;
-		
-		private string _MedicineType;
-		
-		private System.DateTime _MedExpDate;
-		
-		private string _MedManufacturer;
-		
-		private int _MedQty;
-		
-		private string _MedStatus;
-		
-		private System.DateTime _MedLastUpdated;
-		
-		public uspSelectAvailMedsResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedicineID", DbType="Int NOT NULL")]
-		public int MedicineID
-		{
-			get
-			{
-				return this._MedicineID;
-			}
-			set
-			{
-				if ((this._MedicineID != value))
-				{
-					this._MedicineID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedicineName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string MedicineName
-		{
-			get
-			{
-				return this._MedicineName;
-			}
-			set
-			{
-				if ((this._MedicineName != value))
-				{
-					this._MedicineName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedicineType", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string MedicineType
-		{
-			get
-			{
-				return this._MedicineType;
-			}
-			set
-			{
-				if ((this._MedicineType != value))
-				{
-					this._MedicineType = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedExpDate", DbType="Date NOT NULL")]
-		public System.DateTime MedExpDate
-		{
-			get
-			{
-				return this._MedExpDate;
-			}
-			set
-			{
-				if ((this._MedExpDate != value))
-				{
-					this._MedExpDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedManufacturer", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string MedManufacturer
-		{
-			get
-			{
-				return this._MedManufacturer;
-			}
-			set
-			{
-				if ((this._MedManufacturer != value))
-				{
-					this._MedManufacturer = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedQty", DbType="Int NOT NULL")]
-		public int MedQty
-		{
-			get
-			{
-				return this._MedQty;
-			}
-			set
-			{
-				if ((this._MedQty != value))
-				{
-					this._MedQty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedStatus", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string MedStatus
-		{
-			get
-			{
-				return this._MedStatus;
-			}
-			set
-			{
-				if ((this._MedStatus != value))
-				{
-					this._MedStatus = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedLastUpdated", DbType="DateTime NOT NULL")]
-		public System.DateTime MedLastUpdated
-		{
-			get
-			{
-				return this._MedLastUpdated;
-			}
-			set
-			{
-				if ((this._MedLastUpdated != value))
-				{
-					this._MedLastUpdated = value;
-				}
-			}
-		}
-	}
-	
-	public partial class uspSelectAvailSuppliesResult
-	{
-		
-		private int _SupplyID;
-		
-		private string _SupplyName;
-		
-		private System.Nullable<System.DateTime> _SupplyExpDate;
-		
-		private string _SupplierName;
-		
-		private int _SupplyQty;
-		
-		private string _SupplyStatus;
-		
-		private decimal _SupplyPrice;
-		
-		private System.DateTime _SupplyLastUpdated;
-		
-		public uspSelectAvailSuppliesResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyID", DbType="Int NOT NULL")]
-		public int SupplyID
-		{
-			get
-			{
-				return this._SupplyID;
-			}
-			set
-			{
-				if ((this._SupplyID != value))
-				{
-					this._SupplyID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string SupplyName
-		{
-			get
-			{
-				return this._SupplyName;
-			}
-			set
-			{
-				if ((this._SupplyName != value))
-				{
-					this._SupplyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyExpDate", DbType="Date")]
-		public System.Nullable<System.DateTime> SupplyExpDate
-		{
-			get
-			{
-				return this._SupplyExpDate;
-			}
-			set
-			{
-				if ((this._SupplyExpDate != value))
-				{
-					this._SupplyExpDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplierName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string SupplierName
-		{
-			get
-			{
-				return this._SupplierName;
-			}
-			set
-			{
-				if ((this._SupplierName != value))
-				{
-					this._SupplierName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyQty", DbType="Int NOT NULL")]
-		public int SupplyQty
-		{
-			get
-			{
-				return this._SupplyQty;
-			}
-			set
-			{
-				if ((this._SupplyQty != value))
-				{
-					this._SupplyQty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyStatus", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string SupplyStatus
-		{
-			get
-			{
-				return this._SupplyStatus;
-			}
-			set
-			{
-				if ((this._SupplyStatus != value))
-				{
-					this._SupplyStatus = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyPrice", DbType="Money NOT NULL")]
-		public decimal SupplyPrice
-		{
-			get
-			{
-				return this._SupplyPrice;
-			}
-			set
-			{
-				if ((this._SupplyPrice != value))
-				{
-					this._SupplyPrice = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyLastUpdated", DbType="DateTime NOT NULL")]
-		public System.DateTime SupplyLastUpdated
-		{
-			get
-			{
-				return this._SupplyLastUpdated;
-			}
-			set
-			{
-				if ((this._SupplyLastUpdated != value))
-				{
-					this._SupplyLastUpdated = value;
-				}
-			}
-		}
-	}
-	
-	public partial class GetAllSuppliesResult
-	{
-		
-		private int _SupplyID;
-		
-		private string _SupplyName;
-		
-		private System.Nullable<System.DateTime> _SupplyExpDate;
-		
-		private string _SupplierName;
-		
-		private int _SupplyQty;
-		
-		private string _SupplyStatus;
-		
-		private decimal _SupplyPrice;
-		
-		private System.DateTime _SupplyLastUpdated;
-		
-		public GetAllSuppliesResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyID", DbType="Int NOT NULL")]
-		public int SupplyID
-		{
-			get
-			{
-				return this._SupplyID;
-			}
-			set
-			{
-				if ((this._SupplyID != value))
-				{
-					this._SupplyID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string SupplyName
-		{
-			get
-			{
-				return this._SupplyName;
-			}
-			set
-			{
-				if ((this._SupplyName != value))
-				{
-					this._SupplyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyExpDate", DbType="Date")]
-		public System.Nullable<System.DateTime> SupplyExpDate
-		{
-			get
-			{
-				return this._SupplyExpDate;
-			}
-			set
-			{
-				if ((this._SupplyExpDate != value))
-				{
-					this._SupplyExpDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplierName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string SupplierName
-		{
-			get
-			{
-				return this._SupplierName;
-			}
-			set
-			{
-				if ((this._SupplierName != value))
-				{
-					this._SupplierName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyQty", DbType="Int NOT NULL")]
-		public int SupplyQty
-		{
-			get
-			{
-				return this._SupplyQty;
-			}
-			set
-			{
-				if ((this._SupplyQty != value))
-				{
-					this._SupplyQty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyStatus", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string SupplyStatus
-		{
-			get
-			{
-				return this._SupplyStatus;
-			}
-			set
-			{
-				if ((this._SupplyStatus != value))
-				{
-					this._SupplyStatus = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyPrice", DbType="Money NOT NULL")]
-		public decimal SupplyPrice
-		{
-			get
-			{
-				return this._SupplyPrice;
-			}
-			set
-			{
-				if ((this._SupplyPrice != value))
-				{
-					this._SupplyPrice = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyLastUpdated", DbType="DateTime NOT NULL")]
-		public System.DateTime SupplyLastUpdated
-		{
-			get
-			{
-				return this._SupplyLastUpdated;
-			}
-			set
-			{
-				if ((this._SupplyLastUpdated != value))
-				{
-					this._SupplyLastUpdated = value;
-				}
-			}
-		}
-	}
-	
-	public partial class GetSpecificSupplyResult
-	{
-		
-		private int _SupplyID;
-		
-		private string _SupplyName;
-		
-		private System.Nullable<System.DateTime> _SupplyExpDate;
-		
-		private string _SupplierName;
-		
-		private int _SupplyQty;
-		
-		private string _SupplyStatus;
-		
-		private decimal _SupplyPrice;
-		
-		private System.DateTime _SupplyLastUpdated;
-		
-		public GetSpecificSupplyResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyID", DbType="Int NOT NULL")]
-		public int SupplyID
-		{
-			get
-			{
-				return this._SupplyID;
-			}
-			set
-			{
-				if ((this._SupplyID != value))
-				{
-					this._SupplyID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string SupplyName
-		{
-			get
-			{
-				return this._SupplyName;
-			}
-			set
-			{
-				if ((this._SupplyName != value))
-				{
-					this._SupplyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyExpDate", DbType="Date")]
-		public System.Nullable<System.DateTime> SupplyExpDate
-		{
-			get
-			{
-				return this._SupplyExpDate;
-			}
-			set
-			{
-				if ((this._SupplyExpDate != value))
-				{
-					this._SupplyExpDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplierName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string SupplierName
-		{
-			get
-			{
-				return this._SupplierName;
-			}
-			set
-			{
-				if ((this._SupplierName != value))
-				{
-					this._SupplierName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyQty", DbType="Int NOT NULL")]
-		public int SupplyQty
-		{
-			get
-			{
-				return this._SupplyQty;
-			}
-			set
-			{
-				if ((this._SupplyQty != value))
-				{
-					this._SupplyQty = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyStatus", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string SupplyStatus
-		{
-			get
-			{
-				return this._SupplyStatus;
-			}
-			set
-			{
-				if ((this._SupplyStatus != value))
-				{
-					this._SupplyStatus = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyPrice", DbType="Money NOT NULL")]
-		public decimal SupplyPrice
-		{
-			get
-			{
-				return this._SupplyPrice;
-			}
-			set
-			{
-				if ((this._SupplyPrice != value))
-				{
-					this._SupplyPrice = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SupplyLastUpdated", DbType="DateTime NOT NULL")]
-		public System.DateTime SupplyLastUpdated
-		{
-			get
-			{
-				return this._SupplyLastUpdated;
-			}
-			set
-			{
-				if ((this._SupplyLastUpdated != value))
-				{
-					this._SupplyLastUpdated = value;
 				}
 			}
 		}

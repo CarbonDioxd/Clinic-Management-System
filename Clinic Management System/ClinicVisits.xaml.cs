@@ -57,15 +57,22 @@ namespace Clinic_Management_System
             {
                 foreach (tblStudentAdviser sa in clinicDB.tblStudentAdvisers)
                 {
-                    if (patient.PatientID.ToString() == txtPatientName.Text)
+                    foreach(tblEmergencyContact ec in clinicDB.tblEmergencyContacts)
                     {
-                        if (patient.AdviserID == sa.AdviserID)
+                        if (patient.PatientID.ToString() == txtPatientName.Text)
                         {
-                            patientDeetsLB.Items.Add("Patient Name: " + patient.PatientName + "\nGender: " + patient.PatientGender + "\nAge: " + patient.PatientAge
-                            + "\nPatient Type: " + patient.PatientType + "\nDescription: " + patient.PatientDesc + "\nContact Number: " + patient.PatientNum + "\nEmail Address: " + patient.PatientEmail
-                            + "\nHome Address: " + patient.PatientAddress + "\n\nStudent Adviser Details:\nAdviser Name: " + sa.AdviserName + "\nAdviser Email: " + sa.AdviserEmail
-                            + "\nAdviser Number: " + sa.AdviserNum + "\nDepartment: " + sa.AdviserDept);
-                            pID = patient.PatientID;
+                            if (patient.AdviserID == sa.AdviserID)
+                            {
+                                if(ec.PatientID == patient.PatientID)
+                                {
+                                    patientDeetsLB.Items.Add("Patient Name: " + patient.PatientName + "\nGender: " + patient.PatientGender + "\nAge: " + patient.PatientAge
+                                + "\nPatient Type: " + patient.PatientType + "\nDescription: " + patient.PatientDesc + "\nContact Number: " + patient.PatientNum + "\nEmail Address: " + patient.PatientEmail
+                                + "\nHome Address: " + patient.PatientAddress + "\n\nStudent Adviser Details:\nAdviser Name: " + sa.AdviserName + "\nAdviser Email: " + sa.AdviserEmail
+                                + "\nAdviser Number: " + sa.AdviserNum + "\nDepartment: " + sa.AdviserDept +"\n\nEmergency Contact Details:\nName: " + ec.EmgyContactName + "\nRelationship: " + ec.EmgyRelationship
+                                + "\nContact Number: " + ec.EmgyContactNum + "\nEmail Address: " + ec.EmgyContactEmail + "\nHome Address: " + ec.EmgyContactAddress);
+                                    pID = patient.PatientID;
+                                }
+                            }
                         }
                     }
                 }
