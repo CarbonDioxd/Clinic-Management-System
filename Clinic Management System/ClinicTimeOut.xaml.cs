@@ -42,7 +42,7 @@ namespace Clinic_Management_System
             }
 
             availMeds = clinicDB.uspSelectAvailMeds().ToList();
-            foreach(var m in availMeds)
+            foreach (var m in availMeds)
             {
                 medName = m.MedicineName;
                 cbMeds.Items.Add(medName);
@@ -93,67 +93,97 @@ namespace Clinic_Management_System
         {
             int qty = int.Parse(qtyMedTB.Text);
             string med = (string)cbMeds.SelectedItem;
+            bool a = int.TryParse(qtyMedTB.Text, out qty);
+
+            foreach (tblMedicine medic in clinicDB.tblMedicines)
+            {
+                if (medic.MedicineName == med)
+                {
+                    if (qty > medic.MedQty)
+                    {
+                        MessageBox.Show("Input exceeds available quantity");
+                        qtyMedTB.Text = "";
+                    }
+                    else
+                    {
+                        MessageBoxResult res = MessageBox.Show("Confirming... Medicine: " + med + " Qty: " + qty + ". Are you sure with this?"
+                        , "Confirmation Message"
+                        , MessageBoxButton.YesNo
+                        , MessageBoxImage.Question);
+
+                        if (res == MessageBoxResult.Yes)
+                        {
+                            string patient = (string)cbPName.SelectedItem;
+                            int pID = (int)clinicDB.udfGetPatientID(patient);
+                            DateTime timein = timeins1.ElementAt(cbTimeIn.SelectedIndex);
+
+                            int mID = (int)clinicDB.udfGetMedicineID(med);
+                            int vID = (int)clinicDB.udfGetVisitID(pID, timein);
+
+                            clinicDB.uspInsertGivenMeds(vID, mID, qty);
+                            clinicDB.uspInsertLogs(ConstantValues.UID, "Recorded administered medicine(s) to Patient " + patient);
+                            MessageBox.Show("You have successfully recorded the administered medicine to Patient " + patient);
+                        }
+                        else
+                        {
+                            cbMeds.Text = "";
+                            qtyMedTB.Text = "";
+                        }
+                        cbMeds.Text = "";
+                        qtyMedTB.Text = "";
+                    }
+                }
+            }
             
-
-            MessageBoxResult res = MessageBox.Show("Confirming... Medicine: " + med + " Qty: " + qty + ". Are you sure with this?"
-                , "Confirmation Message"
-                , MessageBoxButton.YesNo
-                , MessageBoxImage.Question);
-
-            if (res == MessageBoxResult.Yes)
-            {
-                string patient = (string)cbPName.SelectedItem;
-                int pID = (int)clinicDB.udfGetPatientID(patient);
-                DateTime timein = timeins1.ElementAt(cbTimeIn.SelectedIndex);
-
-                int mID = (int)clinicDB.udfGetMedicineID(med);
-                int vID = (int)clinicDB.udfGetVisitID(pID, timein);
-
-                clinicDB.uspInsertGivenMeds(vID, mID, qty);
-                clinicDB.uspInsertLogs(ConstantValues.UID, "Recorded administered medicine(s) to Patient " + patient);
-                MessageBox.Show("You have successfully recorded the administered medicine to Patient " + patient);
-            }
-            else
-            {
-                cbMeds.Text = "";
-                qtyMedTB.Text = "";
-            }
-
-            cbMeds.Text = "";
-            qtyMedTB.Text = "";
         }
 
         private void btnAddSupply_Click(object sender, RoutedEventArgs e)
         {
-            int qty = int.Parse(qtySuppTB.Text);
+            int qty = 0;
             string supply = (string)cbSupplies.SelectedItem;
+            bool a = int.TryParse(qtySuppTB.Text, out qty);
 
-            MessageBoxResult res = MessageBox.Show("Confirming... Supply: " + supply + " Qty: " + qty + ". Are you sure with this?"
-                , "Confirmation Message"
-                , MessageBoxButton.YesNo
-                , MessageBoxImage.Question);
-
-            if (res == MessageBoxResult.Yes)
+            foreach (tblSupply supp in clinicDB.tblSupplies)
             {
-                string patient = (string)cbPName.SelectedItem;
-                int pID = (int)clinicDB.udfGetPatientID(patient);
+                if (supp.SupplyName == supply)
+                {
+                    if (qty > supp.SupplyQty)
+                    {
+                        MessageBox.Show("Input exceeds available quantity");
+                        qtySuppTB.Text = "";
+                    }
+                    else
+                    {
+                        MessageBoxResult res = MessageBox.Show("Confirming... Supply: " + supply + " Qty: " + qty + ". Are you sure with this?"
+                           , "Confirmation Message"
+                           , MessageBoxButton.YesNo
+                           , MessageBoxImage.Question);
 
-                DateTime timein = timeins1.ElementAt(cbTimeIn.SelectedIndex);
+                        if (res == MessageBoxResult.Yes)
+                        {
+                            string patient = (string)cbPName.SelectedItem;
+                            int pID = (int)clinicDB.udfGetPatientID(patient);
 
-                int sID = (int)clinicDB.udfGetSupplyID(supply);
-                int vID = (int)clinicDB.udfGetVisitID(pID, timein);
+                            DateTime timein = timeins1.ElementAt(cbTimeIn.SelectedIndex);
 
-                clinicDB.uspInsertGivenSupplies(vID, sID, qty);
-                clinicDB.uspInsertLogs(ConstantValues.UID, "Recorded given medical supply(s) to Patient " + patient);
-                MessageBox.Show("You have successfully recorded the given medical supply to Patient " + patient);
+                            int sID = (int)clinicDB.udfGetSupplyID(supply);
+                            int vID = (int)clinicDB.udfGetVisitID(pID, timein);
+
+                            clinicDB.uspInsertGivenSupplies(vID, sID, qty);
+                            clinicDB.uspInsertLogs(ConstantValues.UID, "Recorded given medical supply(s) to Patient " + patient);
+                            MessageBox.Show("You have successfully recorded the given medical supply to Patient " + patient);
+                        }
+                        else
+                        {
+                            cbSupplies.Text = "";
+                            qtySuppTB.Text = "";
+                        }
+                        cbSupplies.Text = "";
+                        qtySuppTB.Text = "";
+                    }
+                }
             }
-            else
-            {
-                cbSupplies.Text = "";
-                qtySuppTB.Text = "";
-            }
-            cbSupplies.Text = "";
-            qtySuppTB.Text = "";
+
         }
 
         private void btnTimeOut_Click(object sender, RoutedEventArgs e)
@@ -174,6 +204,54 @@ namespace Clinic_Management_System
             cbPName.Text = "";
             cbTimeIn.Text = "";
             notesTB.Text = "";
+        }
+
+        private void qtyMedTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int qty = 0;
+            string med = (string)cbMeds.SelectedItem;
+            bool a = int.TryParse(qtyMedTB.Text, out qty);
+            if (a == false && qtyMedTB.Text.Length > 0)
+            {
+                MessageBox.Show("Please input a number");
+                qtyMedTB.Text = null;
+            }
+            else
+            {
+                btnAddMed.IsEnabled = true;
+            }
+        }
+
+        private void cbSupplies_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbSupplies.SelectedIndex >= 0)
+            {
+                qtySuppTB.IsEnabled = true;
+            }
+        }
+
+        private void qtySuppTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int qty = 0;
+            string supply = (string)cbSupplies.SelectedItem;
+            bool a = int.TryParse(qtySuppTB.Text, out qty);
+            if (a == false && qtySuppTB.Text.Length > 0)
+            {
+                MessageBox.Show("Please input a number");
+                qtySuppTB.Text = null;  
+            }
+            else
+            {
+                btnAddSupply.IsEnabled = true;
+            }
+        }
+
+        private void cbMeds_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbMeds.SelectedIndex >= 0)
+            {
+                qtyMedTB.IsEnabled = true;
+            }
         }
     }
 }

@@ -50,17 +50,17 @@
         <Label Content="Time In" HorizontalAlignment="Left" Margin="224,102,0,0" VerticalAlignment="Top" Foreground="Black"/>
         <Rectangle HorizontalAlignment="Left" Height="1" Margin="45,182,0,0" Stroke="Black" VerticalAlignment="Top" Width="342"/>
         <Label Content="Administered Medicine(s)" HorizontalAlignment="Left" Margin="45,197,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="14" FontWeight="Bold"/>
-        <ComboBox x:Name="cbMeds" HorizontalAlignment="Left" Margin="45,250,0,0" VerticalAlignment="Top" Width="223" Height="29"/>
+        <ComboBox x:Name="cbMeds" HorizontalAlignment="Left" Margin="45,250,0,0" VerticalAlignment="Top" Width="223" Height="29" SelectionChanged="cbMeds_SelectionChanged"/>
         <Label Content="Medicine" HorizontalAlignment="Left" Margin="45,226,0,0" VerticalAlignment="Top" Foreground="Black"/>
-        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="qtyMedTB" HorizontalAlignment="Left" Margin="273,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="114" Height="29"/>
+        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="qtyMedTB" HorizontalAlignment="Left" Margin="273,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="114" Height="29" TextChanged="qtyMedTB_TextChanged" IsEnabled="False"/>
         <Label Content="Quantity Given" HorizontalAlignment="Left" Margin="273,226,0,0" VerticalAlignment="Top" Foreground="Black"/>
-        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnAddMed" Content="Add" HorizontalAlignment="Left" Margin="321,284,0,0" VerticalAlignment="Top" Height="29" Width="66" Foreground="White" Background="#FF582723" Click="btnAddMed_Click"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnAddMed" Content="Add" HorizontalAlignment="Left" Margin="321,284,0,0" VerticalAlignment="Top" Height="29" Width="66" Foreground="White" Background="#FF582723" Click="btnAddMed_Click" IsEnabled="False"/>
         <Label Content="Given Medical Supply(s)" HorizontalAlignment="Left" Margin="45,315,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="14" FontWeight="Bold"/>
-        <ComboBox x:Name="cbSupplies" HorizontalAlignment="Left" Margin="45,368,0,0" VerticalAlignment="Top" Width="223" Height="29"/>
+        <ComboBox x:Name="cbSupplies" HorizontalAlignment="Left" Margin="45,368,0,0" VerticalAlignment="Top" Width="223" Height="29" SelectionChanged="cbSupplies_SelectionChanged"/>
         <Label Content="Medical Supply" HorizontalAlignment="Left" Margin="45,344,0,0" VerticalAlignment="Top" Foreground="Black"/>
-        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="qtySuppTB" HorizontalAlignment="Left" Margin="273,368,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="114" Height="29"/>
+        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="qtySuppTB" HorizontalAlignment="Left" Margin="273,368,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="114" Height="29" IsEnabled="False" TextChanged="qtySuppTB_TextChanged"/>
         <Label Content="Quantity Given" HorizontalAlignment="Left" Margin="273,344,0,0" VerticalAlignment="Top" Foreground="Black"/>
-        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnAddSupply" Content="Add" HorizontalAlignment="Left" Margin="321,402,0,0" VerticalAlignment="Top" Height="29" Width="66" Foreground="White" Background="#FF582723" Click="btnAddSupply_Click"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnAddSupply" Content="Add" HorizontalAlignment="Left" Margin="321,402,0,0" VerticalAlignment="Top" Height="29" Width="66" Foreground="White" Background="#FF582723" Click="btnAddSupply_Click" IsEnabled="False"/>
         <Label Content="Observation / Notes" HorizontalAlignment="Left" Margin="426,87,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="14" FontWeight="Bold"/>
         <TextBox x:Name="notesTB" HorizontalAlignment="Left" Margin="426,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Height="244"/>
         <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="623,24,0,0" VerticalAlignment="Top" Height="29" Width="100" Foreground="White" Background="#FF582723" Click="btnBack_Click"/>
