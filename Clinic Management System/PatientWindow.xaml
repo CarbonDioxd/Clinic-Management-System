@@ -44,7 +44,7 @@
         <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="681,413,0,0" VerticalAlignment="Top" Height="30" Width="97" Background="#FFEBBC38" Foreground="Black" Click="btnBack_Click"/>
         <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnRegisterPatient" Content="Register Patient" HorizontalAlignment="Left" Margin="16,413,0,0" VerticalAlignment="Top" Height="30" Width="138" Background="#FFEBBC38" Foreground="Black" Click="btnRegisterPatient_Click" />
         <Label Content="Patient's Name" HorizontalAlignment="Left" Margin="19,12,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="txtPatientName" HorizontalAlignment="Left" Margin="19,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295" Height="25"/>
+        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="txtPatientName" HorizontalAlignment="Left" Margin="19,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295" Height="25" KeyUp="txtPatientName_KeyUp" TextChanged="txtPatientName_TextChanged"/>
         <Button Style="{StaticResource RoundedButtonStyle}" x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="326,38,0,0" VerticalAlignment="Top" Height="25" Width="74" Background="#FFEBBC38" Foreground="#FF101010" Click="btnSearch_Click"/>
         <ComboBox x:Name="cbAge" HorizontalAlignment="Left" Margin="63,74,0,0" VerticalAlignment="Top" Width="52" Height="24" BorderBrush="White" SelectionChanged="cbAge_SelectionChanged"/>
         <Label Content="Age" HorizontalAlignment="Left" Margin="13,72,0,0" VerticalAlignment="Top" Foreground="White"/>

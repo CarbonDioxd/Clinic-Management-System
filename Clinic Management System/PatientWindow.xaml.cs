@@ -273,6 +273,35 @@ namespace Clinic_Management_System
             }
         }
 
-        
+        private void txtPatientName_KeyUp(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void txtPatientName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtPatientName.Text.Length > 0)
+            {
+                string name = txtPatientName.Text;
+
+                lbPatientResults.Items.Clear();
+                cbAge.SelectedIndex = -1;
+                cbGender.SelectedIndex = -1;
+                cbType.SelectedIndex = -1;
+
+                foreach (tblPatient patient in db_con.tblPatients)
+                {
+                    string[] a = patient.PatientName.Split(' ');
+                    if (name.ToLower() == a[0].ToLower() || name.ToLower() == a[1].ToLower() || name.ToLower() == patient.PatientName.ToLower())
+                    {
+                        lbPatientResults.Items.Add(patient.PatientName);
+                    }
+                }
+            }
+           if (txtPatientName.Text.Length == 0)
+           {
+                Fill();
+           }
+        }
     }
 }

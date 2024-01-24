@@ -59,6 +59,7 @@ namespace Clinic_Management_System
                         db_con.uspInsertLogs(UID, "A medical professional has logged in");
                         MedProHomepage();
                         this.Close();
+                    
                     }
                     else
                     {

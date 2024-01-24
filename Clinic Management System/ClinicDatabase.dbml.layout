@@ -76,7 +76,7 @@
         <classShapeMoniker Id="a8c3eb4a-c124-4972-9dd9-80363650040a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.125 : 4.53929768880208); (6.875 : 4.53929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(6.125 : 4.53929768880208); (6.41666666666667 : 4.53929768880208 : JumpStart); (6.58333333333333 : 4.53929768880208 : JumpEnd); (6.875 : 4.53929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ClinicDatabaseDataContext/tblClinicVisit/tblClinicVisit_tblPtMedHistory" />
       <nodes>
         <classShapeMoniker Id="7dc5c4a2-e50a-433c-9db3-579fe1865d6d" />

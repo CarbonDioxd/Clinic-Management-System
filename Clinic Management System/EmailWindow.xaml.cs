@@ -23,8 +23,8 @@ namespace Clinic_Management_System
     {
         ClinicDatabaseDataContext db_con = ConstantValues.DBConnectionString;
         string username = "";
-        string password = "beut ekgz secg xasy";
-        string senderEmail = "sfsuriaga@gmail.com";
+        string password = "zovp gwqv sicw xmzn";
+        string senderEmail = "northville.edu.ph@gmail.com";
         
         string template = "";
 
